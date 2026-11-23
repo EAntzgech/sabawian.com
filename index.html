@@ -1044,19 +1044,19 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label for="producer-name" class="block text-xs font-bold text-brand-ink mb-1.5">Name &amp; Title</label>
-                  <input id="producer-name" type="text" required placeholder="Name / Executive Producer"
+                  <input id="producer-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="Name / Executive Producer"
                          class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
                 </div>
                 <div>
                   <label for="producer-email" class="block text-xs font-bold text-brand-ink mb-1.5">Production Email</label>
-                  <input id="producer-email" type="email" required placeholder="name@productioncompany.com"
+                  <input id="producer-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="name@productioncompany.com"
                          class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
                 </div>
               </div>
 
               <div>
                 <label for="inquiry-category" class="block text-xs font-bold text-brand-ink mb-1.5">Engagement Type</label>
-                <select id="inquiry-category"
+                <select id="inquiry-category" name="engagement_type"
                         class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink font-medium focus:outline-none focus:border-brand-ink transition">
                   <option value="Feature Film / VFX Bidding">Feature Film / Visual Effects Bidding</option>
                   <option value="Upcoming Feature Film — Producer Screener / Lookbook">Upcoming Feature Film — Producer Screener / Lookbook</option>
@@ -1068,7 +1068,7 @@
 
               <div>
                 <label for="inquiry-details" class="block text-xs font-bold text-brand-ink mb-1.5">Production Brief &amp; Delivery Schedule</label>
-                <textarea id="inquiry-details" rows="4" required placeholder="Share project scope, shot count or runtime, and target delivery window..."
+                <textarea id="inquiry-details" name="brief" rows="4" required maxlength="10000" placeholder="Share project scope, shot count or runtime, and target delivery window..."
                           class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition"></textarea>
               </div>
 
@@ -1430,16 +1430,7 @@
     // =========================================================================
     // 4. PRODUCER INQUIRY FORM HANDLER
     // =========================================================================
-    const producerForm = document.getElementById('producer-inquiry-form');
-    const inquiryStatus = document.getElementById('inquiry-status');
-
-    producerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('producer-name').value.trim();
-      const category = document.getElementById('inquiry-category').value;
-      inquiryStatus.textContent = `Confirmed: ${category} inquiry prepared for ${name}. Sabawian Production will respond promptly.`;
-      producerForm.reset();
-    });
+    // The secure form handler is loaded as a module below.
 
     // =========================================================================
     // 5. 3D SERVICE CARD TILT & CURSOR / SCROLL REACTIVE 3D SPHERES
@@ -1508,5 +1499,6 @@
     }
     requestAnimationFrame(animateSpheres);
   </script>
+  <script type="module" src="./production-inquiry.js"></script>
 </body>
 </html>

@@ -1,1 +1,1099 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sabawian Production</title><link rel="stylesheet" href="style.css"></head><body><div class="hero"><div class="bg"></div><nav><div class="logo">SABAWIAN</div><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></nav><section class="center"><h1>VISUAL STORIES<br>BEYOND IMAGINATION</h1><p>Creative studio with 10+ years of experience in film, editing, VFX and digital innovation.</p><a class="btn" href="https://www.youtube.com/@SabawianProduction">Watch Our Work</a></section></div><section id="work"><h2>Featured Work</h2><div class="grid"><div class="card"><h3>YouTube Portfolio</h3><p>See projects and productions from Sabawian Production.</p></div><div class="card"><h3>Visual Effects</h3><p>Cinematic editing, compositing and motion design.</p></div><div class="card"><h3>AI Innovation</h3><p>Exploring the future of storytelling.</p></div></div></section><section id="services"><h2>Services</h2><div class="grid"><div class="card">Film Production</div><div class="card">Video Editing</div><div class="card">VFX</div><div class="card">Creative Technology</div></div></section><section id="contact"><h2>Contact</h2><p>YouTube: @SabawianProduction</p></section></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabawian Production | Stories. Visual Effects. Innovation.</title>
+  <meta name="description" content="Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling." />
+  <meta name="keywords" content="Sabawian Production, Visual Effects, VFX, Film Production, Commercial Production, Video Editing, Creative Technology, Saba AI, sabawian.com" />
+  <meta name="author" content="Sabawian Production" />
+  <link rel="canonical" href="https://sabawian.com" />
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            limebase: '#EAF7D4',
+            inkdark: '#141712',
+            gold: {
+              DEFAULT: '#D4AF37',
+              amber: '#F59E0B',
+              deep: '#B45309',
+            },
+            electric: {
+              DEFAULT: '#2563EB',
+              sky: '#38BDF8',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --lime-top: #F5FCE8;
+      --lime-mid: #E6F6C8;
+      --lime-bottom: #D9F0B4;
+      --glass-bg: rgba(255, 255, 255, 0.56);
+      --glass-bg-elevated: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-rim: rgba(20, 23, 18, 0.08);
+      --ink-primary: #141712;
+      --ink-secondary: #374133;
+      --gold-accent: #E89611;
+      --gold-rim: #D4AF37;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ink-primary);
+      background: linear-gradient(155deg, var(--lime-top) 0%, var(--lime-mid) 52%, var(--lime-bottom) 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Smooth 3D Shaded Spheres Floating Around the Glass Window */
+    .ref-sphere {
+      position: fixed;
+      border-radius: 9999px;
+      pointer-events: none;
+      will-change: transform;
+      z-index: 1;
+    }
+
+    .sphere-magenta {
+      background: radial-gradient(circle at 30% 26%, #FF9CE3 0%, #EC4899 38%, #BE185D 78%, #6B0F38 100%);
+      box-shadow: 0 26px 60px rgba(219, 39, 119, 0.28), inset -12px -14px 28px rgba(45, 5, 25, 0.35);
+    }
+
+    .sphere-violet {
+      background: radial-gradient(circle at 32% 28%, #DDD6FE 0%, #8B5CF6 42%, #5B21B6 82%, #2E1065 100%);
+      box-shadow: 0 26px 60px rgba(124, 58, 237, 0.26), inset -12px -14px 28px rgba(24, 9, 61, 0.38);
+    }
+
+    .sphere-amber {
+      background: radial-gradient(circle at 30% 28%, #FEF08A 0%, #F59E0B 45%, #C26D06 82%, #663300 100%);
+      box-shadow: 0 28px 65px rgba(245, 158, 11, 0.3), inset -12px -14px 28px rgba(56, 26, 0, 0.35);
+    }
+
+    .sphere-blue {
+      background: radial-gradient(circle at 30% 28%, #BAE6FD 0%, #38BDF8 44%, #1D4ED8 82%, #172554 100%);
+      box-shadow: 0 24px 55px rgba(37, 99, 235, 0.22), inset -10px -12px 24px rgba(15, 23, 42, 0.35);
+    }
+
+    /* Main Centerpiece Frosted Glass Window Card */
+    .glass-window {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.64) 0%,
+        rgba(255, 255, 255, 0.44) 55%,
+        rgba(255, 255, 255, 0.58) 100%
+      );
+      backdrop-filter: blur(28px) saturate(145%);
+      -webkit-backdrop-filter: blur(28px) saturate(145%);
+      border-radius: 28px;
+      border: 1.5px solid var(--glass-border);
+      box-shadow:
+        0 34px 80px -18px rgba(28, 42, 16, 0.22),
+        0 0 0 1px var(--glass-rim),
+        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.9);
+    }
+
+    /* Inner Glass Card for Sub-Pages (Portfolio, Films, Services, Studio, Saba AI, Contact) */
+    .glass-subcard {
+      background: rgba(255, 255, 255, 0.56);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow:
+        0 16px 36px -12px rgba(28, 42, 16, 0.14),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.32s ease,
+                  border-color 0.32s ease,
+                  background-color 0.32s ease;
+    }
+
+    .glass-subcard:hover {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(212, 175, 55, 0.75);
+      box-shadow:
+        0 22px 46px -12px rgba(28, 42, 16, 0.2),
+        0 0 20px rgba(212, 175, 55, 0.18),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    }
+
+    /* Reference-Style Pill Buttons */
+    .btn-amber-pill {
+      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 55%, #D97706 100%);
+      color: #FFFFFF;
+      font-weight: 600;
+      border-radius: 9999px;
+      box-shadow: 0 10px 24px -6px rgba(217, 119, 6, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+    }
+
+    .btn-amber-pill:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 14px 28px -6px rgba(217, 119, 6, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-cream-pill {
+      background: rgba(255, 252, 245, 0.94);
+      color: #1E241B;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: 1px solid rgba(20, 23, 18, 0.08);
+      box-shadow: 0 8px 20px -6px rgba(20, 23, 18, 0.14);
+      transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .btn-cream-pill:hover {
+      transform: translateY(-2px);
+      background: #FFFFFF;
+      box-shadow: 0 12px 24px -6px rgba(20, 23, 18, 0.2);
+    }
+
+    /* Active Page Nav Pill */
+    .nav-page-link {
+      position: relative;
+      padding: 0.4rem 0.7rem;
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #374133;
+      transition: color 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-page-link:hover {
+      color: #141712;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .nav-page-link.is-active {
+      color: #B45309;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 2px 10px rgba(20, 23, 18, 0.06);
+    }
+
+    /* Page View Transition */
+    .page-view {
+      display: none;
+      animation: pageFadeIn 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .page-view.is-active {
+      display: block;
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 3D Service Card Tilt */
+    .service-tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-300/60 selection:text-inkdark">
+
+  <!-- Vibrant 3D Floating Spheres Around the Glass Window (React to Mouse & Scroll) -->
+  <div aria-hidden="true">
+    <!-- Top-Right Violet Sphere (Matches Reference Top-Right) -->
+    <div data-depth="0.065" data-scroll="0.14" data-phase="0.2"
+         class="ref-sphere sphere-violet w-36 h-36 sm:w-52 sm:h-52 top-4 right-[8%] sm:right-[15%]"></div>
+
+    <!-- Mid-Left Large Magenta/Pink Sphere (Matches Reference Left Edge) -->
+    <div data-depth="-0.075" data-scroll="-0.16" data-phase="1.4"
+         class="ref-sphere sphere-magenta w-44 h-44 sm:w-64 sm:h-64 top-[24%] -left-14 sm:left-[2%]"></div>
+
+    <!-- Lower-Left Small Magenta Sphere (Matches Reference Lower-Left Accent) -->
+    <div data-depth="0.09" data-scroll="0.18" data-phase="2.5"
+         class="ref-sphere sphere-magenta w-14 h-14 sm:w-20 sm:h-20 bottom-[26%] left-[6%] sm:left-[12%]"></div>
+
+    <!-- Bottom-Center Violet/Blue Sphere (Matches Reference Bottom Edge) -->
+    <div data-depth="-0.06" data-scroll="-0.12" data-phase="3.7"
+         class="ref-sphere sphere-violet w-40 h-40 sm:w-56 sm:h-56 -bottom-16 left-[28%] sm:left-[35%]"></div>
+
+    <!-- Right-Center Large Amber/Gold Sphere (Matches Reference Right Edge) -->
+    <div data-depth="0.08" data-scroll="0.16" data-phase="4.8"
+         class="ref-sphere sphere-amber w-48 h-48 sm:w-72 sm:h-72 top-[38%] -right-16 sm:right-[1%]"></div>
+
+    <!-- Small Floating Gold Sphere Above Right Amber -->
+    <div data-depth="-0.095" data-scroll="-0.15" data-phase="5.4"
+         class="ref-sphere sphere-amber w-12 h-12 sm:w-16 sm:h-16 top-[28%] right-[9%] sm:right-[13%]"></div>
+
+    <!-- Subtle Electric Blue Accent Sphere for Creative Tech / Saba AI Balance -->
+    <div data-depth="0.055" data-scroll="0.1" data-phase="6.1"
+         class="ref-sphere sphere-blue w-24 h-24 sm:w-32 sm:h-32 bottom-8 right-[14%] opacity-85"></div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-9 flex-1 flex flex-col justify-center">
+
+    <!-- CENTERPIECE FROSTED GLASS WINDOW CARD -->
+    <main class="glass-window w-full px-5 py-6 sm:px-10 sm:py-8 lg:px-12 lg:py-10">
+
+      <!-- TOP BAR INSIDE THE GLASS WINDOW -->
+      <header class="flex flex-wrap items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-inkdark/10">
+        <!-- Left Overlapping Dual-Circle Studio Mark (Matches Reference Top-Left) -->
+        <button type="button" onclick="navigateTo('home')" class="flex items-center gap-2.5 text-left group cursor-pointer focus:outline-none" aria-label="Sabawian Production Home">
+          <span class="relative flex items-center w-9 h-6">
+            <span class="w-5 h-5 rounded-full bg-white shadow-sm border border-inkdark/10 transition-transform duration-300 group-hover:-translate-x-0.5"></span>
+            <span class="w-5 h-5 rounded-full -ml-2 bg-gradient-to-tr from-amber-500 to-yellow-300 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"></span>
+          </span>
+          <span class="font-display font-bold text-xs sm:text-sm tracking-wider text-inkdark uppercase">
+            Sabawian
+          </span>
+        </button>
+
+        <!-- Center Single-Row Standalone Page Navigation -->
+        <nav aria-label="Standalone Pages" class="hidden md:flex items-center gap-1 lg:gap-2">
+          <button type="button" data-page="home" class="nav-page-link is-active">Home</button>
+          <button type="button" data-page="portfolio" class="nav-page-link">Portfolio</button>
+          <button type="button" data-page="films" class="nav-page-link">Films</button>
+          <button type="button" data-page="services" class="nav-page-link">Services</button>
+          <button type="button" data-page="studio" class="nav-page-link">Studio</button>
+          <button type="button" data-page="saba-ai" class="nav-page-link">Saba AI</button>
+          <button type="button" data-page="contact" class="nav-page-link">Contact</button>
+        </nav>
+
+        <!-- Right Pill Button + Mobile Menu Trigger -->
+        <div class="flex items-center gap-2.5">
+          <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="btn-cream-pill px-4 py-1.5 text-xs sm:text-sm inline-flex items-center gap-1.5">
+            <span>sabawian.com</span>
+          </a>
+          <button id="mobile-nav-toggle" type="button" aria-label="Toggle Page Menu" aria-expanded="false"
+                  class="md:hidden p-2 rounded-full bg-white/75 border border-inkdark/10 text-inkdark hover:bg-white transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile Standalone Page Drawer -->
+      <div id="mobile-page-drawer" class="hidden md:hidden flex-wrap gap-1.5 py-3.5 border-b border-inkdark/10">
+        <button type="button" data-page="home" class="nav-page-link is-active">Home</button>
+        <button type="button" data-page="portfolio" class="nav-page-link">Portfolio</button>
+        <button type="button" data-page="films" class="nav-page-link">Films</button>
+        <button type="button" data-page="services" class="nav-page-link">Services</button>
+        <button type="button" data-page="studio" class="nav-page-link">Studio</button>
+        <button type="button" data-page="saba-ai" class="nav-page-link">Saba AI</button>
+        <button type="button" data-page="contact" class="nav-page-link">Contact</button>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 1: HOME (Matches Reference Two-Column Composition & Balance)     -->
+      <!-- =================================================================== -->
+      <section id="page-home" class="page-view is-active pt-7 sm:pt-10 pb-3">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+
+          <!-- Left Column: Studio Headline, Subheadline, Concise Copy, Two Pill Buttons & Social Icons -->
+          <div class="lg:col-span-6 space-y-5">
+            <div class="space-y-1.5">
+              <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight text-inkdark">
+                SABAWIAN<br />
+                PRODUCTION
+              </h1>
+              <p class="font-display font-bold text-lg sm:text-xl text-amber-500 tracking-tight">
+                Stories. Visual Effects. Innovation.
+              </p>
+            </div>
+
+            <p class="text-sm sm:text-[0.95rem] leading-relaxed text-inkdark/80 max-w-md">
+              Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling.
+            </p>
+
+            <!-- Two Reference-Style Pill Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-1">
+              <button
+                type="button"
+                onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Official VFX & Cinema Reel', 'FEATURED REEL')"
+                class="btn-amber-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <span>Watch Reel</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="navigateTo('portfolio')"
+                class="btn-cream-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>View Portfolio</span>
+              </button>
+            </div>
+
+            <!-- Bottom Channel Icons Row (Matches Reference Bottom-Left Social Icons) -->
+            <div class="pt-4 flex items-center gap-3">
+              <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
+                 aria-label="Sabawian Production on YouTube"
+                 class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-amber-500 transition-colors shadow-sm">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+
+              <button type="button" onclick="navigateTo('saba-ai')" aria-label="Saba AI Innovation"
+                      class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-blue-600 transition-colors shadow-sm cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </button>
+
+              <button type="button" onclick="navigateTo('contact')" aria-label="Contact Sabawian Production"
+                      class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-amber-500 transition-colors shadow-sm cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Crisp Architectural & Cinema Focal Visual with Glass Surface Reflection -->
+          <div class="lg:col-span-6 flex items-center justify-center">
+            <div class="w-full max-w-lg">
+              <svg viewBox="0 0 540 360" class="w-full h-auto select-none drop-shadow-[0_18px_24px_rgba(20,23,18,0.16)]" aria-label="Architectural Skyline & Cinema Reflection">
+                <defs>
+                  <linearGradient id="archLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="55%" stop-color="#E5E7EB" />
+                    <stop offset="100%" stop-color="#9CA3AF" />
+                  </linearGradient>
+                  <linearGradient id="archShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4B5563" />
+                    <stop offset="100%" stop-color="#1F2937" />
+                  </linearGradient>
+                  <linearGradient id="archGoldTrim" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FDE68A" />
+                    <stop offset="100%" stop-color="#D97706" />
+                  </linearGradient>
+                  <linearGradient id="glassReflect" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#374151" stop-opacity="0.34" />
+                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Left Botanical / Foliage Silhouette Cluster -->
+                <g fill="#2F3E2E" opacity="0.85">
+                  <circle cx="95" cy="224" r="18" />
+                  <circle cx="116" cy="218" r="22" />
+                  <circle cx="140" cy="222" r="17" />
+                  <circle cx="160" cy="226" r="14" />
+                </g>
+
+                <!-- Right Foliage Cluster -->
+                <g fill="#2F3E2E" opacity="0.85">
+                  <circle cx="388" cy="226" r="15" />
+                  <circle cx="408" cy="221" r="20" />
+                  <circle cx="430" cy="225" r="16" />
+                </g>
+
+                <!-- Skyline Towers (Crisp Architectural Geometry Matching Reference Balance) -->
+                <!-- Tower 1 (Left) -->
+                <polygon points="154,228 154,142 172,132 172,228" fill="url(#archLight)" />
+                <polygon points="172,228 172,132 186,140 186,228" fill="url(#archShadow)" />
+
+                <!-- Tower 2 -->
+                <polygon points="190,228 190,114 210,104 210,228" fill="url(#archLight)" />
+                <polygon points="210,228 210,104 224,116 224,228" fill="url(#archGoldTrim)" opacity="0.85" />
+
+                <!-- Center Tall Spire -->
+                <polygon points="230,228 230,74 252,60 252,228" fill="url(#archLight)" />
+                <polygon points="252,228 252,60 272,76 272,228" fill="url(#archShadow)" />
+                <line x1="252" y1="38" x2="252" y2="60" stroke="#1F2937" stroke-width="2" />
+
+                <!-- Tower 4 (Mid-Right) -->
+                <polygon points="278,228 278,96 300,84 300,228" fill="url(#archLight)" />
+                <polygon points="300,228 300,84 318,98 318,228" fill="url(#archShadow)" />
+
+                <!-- Tower 5 (Right) -->
+                <polygon points="324,228 324,122 346,110 346,228" fill="url(#archLight)" />
+                <polygon points="346,228 346,110 364,124 364,228" fill="url(#archShadow)" />
+
+                <!-- Horizon Baseline -->
+                <line x1="70" y1="228" x2="470" y2="228" stroke="#374151" stroke-opacity="0.3" stroke-width="1.2" />
+
+                <!-- Subtle Reflection on Glass Surface Below Horizon -->
+                <g transform="translate(0, 456) scale(1, -0.42)" opacity="0.55">
+                  <polygon points="154,228 154,142 186,140 186,228" fill="url(#glassReflect)" />
+                  <polygon points="190,228 190,114 224,116 224,228" fill="url(#glassReflect)" />
+                  <polygon points="230,228 230,74 272,76 272,228" fill="url(#glassReflect)" />
+                  <polygon points="278,228 278,96 318,98 318,228" fill="url(#glassReflect)" />
+                  <polygon points="324,228 324,122 364,124 364,228" fill="url(#glassReflect)" />
+                </g>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 2: PORTFOLIO (Visual Effects + Commercial Projects)              -->
+      <!-- =================================================================== -->
+      <section id="page-portfolio" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Selected Showcases</p>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Portfolio</h2>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="inline-flex p-1 rounded-full bg-white/65 border border-white/85 self-start">
+            <button type="button" data-pfilter="all" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-inkdark text-white transition cursor-pointer">
+              All (8)
+            </button>
+            <button type="button" data-pfilter="vfx" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-medium text-inkdark/75 hover:text-inkdark transition cursor-pointer">
+              Visual Effects (5)
+            </button>
+            <button type="button" data-pfilter="commercial" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-medium text-inkdark/75 hover:text-inkdark transition cursor-pointer">
+              Commercial (3)
+            </button>
+          </div>
+        </div>
+
+        <!-- Visual Effects Sub-Group -->
+        <div id="p-group-vfx" class="mb-8">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            <h3 class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-inkdark">
+              Visual Effects
+            </h3>
+          </div>
+          <div id="portfolio-vfx-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- Commercial Projects Sub-Group -->
+        <div id="p-group-commercial">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            <h3 class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-inkdark">
+              Commercial Projects
+            </h3>
+          </div>
+          <div id="portfolio-commercial-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 3: FILMS (Streaming-Style Widescreen Film Production)          -->
+      <!-- =================================================================== -->
+      <section id="page-films" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-600">Widescreen Cinema</p>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Film Production</h2>
+        </div>
+
+        <!-- Active Widescreen Banner -->
+        <div class="glass-subcard rounded-3xl overflow-hidden mb-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div class="lg:col-span-6 p-6 sm:p-8 space-y-3.5">
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-wider">
+                <span id="active-film-badge" class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-700 border border-amber-500/30">FEATURE FILM</span>
+                <span id="active-film-format" class="text-inkdark/60">4K ANAMORPHIC</span>
+              </div>
+              <h3 id="active-film-title" class="font-display font-extrabold text-xl sm:text-2xl text-inkdark">
+                Chronicles of Light &amp; Shadow
+              </h3>
+              <p id="active-film-desc" class="text-xs sm:text-sm text-inkdark/75 leading-relaxed">
+                Cinematic visual storytelling uniting practical camera work, photoreal environments, and atmospheric lighting.
+              </p>
+              <div class="pt-1 flex flex-wrap items-center gap-3">
+                <button id="active-film-play" type="button" class="btn-amber-pill px-5 py-2 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span>Watch Preview</span>
+                </button>
+                <span id="active-film-credits" class="text-xs text-inkdark/65 font-medium">Direction • Cinematography • VFX</span>
+              </div>
+            </div>
+
+            <div id="active-film-visual" class="lg:col-span-6 h-52 sm:h-64 w-full overflow-hidden"></div>
+          </div>
+        </div>
+
+        <!-- 3 Streaming-Style Selector Cards -->
+        <div id="film-tabs-row" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 4: SERVICES (6 Studio Disciplines with 3D Hover Tilt)          -->
+      <!-- =================================================================== -->
+      <section id="page-services" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Capabilities</p>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Studio Services</h2>
+        </div>
+
+        <div id="services-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 5: STUDIO (More Than A Decade of Visual Storytelling)          -->
+      <!-- =================================================================== -->
+      <section id="page-studio" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <p class="text-xs font-bold uppercase tracking-widest text-amber-600">About Sabawian Production</p>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark leading-tight">
+              More Than A Decade of Visual Storytelling
+            </h2>
+            <p class="text-sm sm:text-base text-inkdark/80 leading-relaxed">
+              Sabawian Production is a creative studio dedicated to producing compelling visual experiences through film, visual effects, storytelling, and emerging technologies.
+            </p>
+            <p class="text-xs sm:text-sm text-inkdark/70 leading-relaxed">
+              With over 10 years of independent experience across Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling, we craft distinctive visuals built for cinema, screens, and digital worlds.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5 grid grid-cols-1 gap-3.5">
+            <div class="glass-subcard rounded-2xl p-4">
+              <p class="font-display font-extrabold text-xl text-amber-600">10+ Years</p>
+              <p class="text-xs text-inkdark/75 mt-0.5">Independent Creative Studio Experience</p>
+            </div>
+            <div class="glass-subcard rounded-2xl p-4">
+              <p class="font-display font-extrabold text-xl text-blue-600">Film &amp; VFX Pipeline</p>
+              <p class="text-xs text-inkdark/75 mt-0.5">Production, Compositing, Editing &amp; Commercials</p>
+            </div>
+            <div class="glass-subcard rounded-2xl p-4">
+              <p class="font-display font-extrabold text-xl text-inkdark">Next-Gen Creative Tech</p>
+              <p class="text-xs text-inkdark/75 mt-0.5">Visual Innovation &amp; Saba AI Storytelling</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 6: SABA AI (The Future of Storytelling)                        -->
+      <!-- =================================================================== -->
+      <section id="page-saba-ai" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/25 text-[11px] font-bold uppercase tracking-wider text-blue-700">
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              Saba AI Innovation
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark leading-tight">
+              The Future of Storytelling
+            </h2>
+            <p class="font-display font-bold text-base sm:text-lg text-amber-600">
+              Saba AI
+            </p>
+            <p class="text-sm sm:text-base text-inkdark/80 leading-relaxed">
+              Exploring the next frontier of digital characters, AI-powered storytelling, and immersive creative experiences.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">Digital Characters</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">AI-Powered Storytelling</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">Immersive Experiences</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="glass-subcard rounded-3xl p-6 w-full max-w-xs flex flex-col items-center text-center">
+              <svg viewBox="0 0 220 220" class="w-40 h-40" aria-label="Saba AI Emblem">
+                <circle cx="110" cy="110" r="88" fill="none" stroke="#2563EB" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="5 5" />
+                <circle cx="110" cy="110" r="62" fill="none" stroke="#D97706" stroke-opacity="0.45" stroke-width="1.5" />
+                <circle cx="110" cy="110" r="34" fill="url(#sabaOrbGrad)" />
+                <defs>
+                  <radialGradient id="sabaOrbGrad" cx="35%" cy="30%" r="65%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="45%" stop-color="#38BDF8" />
+                    <stop offset="100%" stop-color="#2563EB" />
+                  </radialGradient>
+                </defs>
+              </svg>
+              <p class="font-display font-bold text-sm text-inkdark mt-1">SABA AI</p>
+              <p class="text-xs text-inkdark/65">Digital Characters &amp; Narrative Tech</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- PAGE 7: CONTACT (Let's Create Something Extraordinary)              -->
+      <!-- =================================================================== -->
+      <section id="page-contact" class="page-view pt-6 sm:pt-8 pb-3">
+        <div class="max-w-3xl mx-auto text-center space-y-5">
+          <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Get In Touch</p>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark">
+            Let's Create Something Extraordinary
+          </h2>
+          <p class="text-sm sm:text-base text-inkdark/75">
+            Connect with Sabawian Production for film production, visual effects, commercial projects, and creative technology collaborations.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+            <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
+               class="btn-amber-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>YouTube: @SabawianProduction</span>
+            </a>
+
+            <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer"
+               class="btn-cream-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2">
+              <span>Website: sabawian.com</span>
+            </a>
+          </div>
+
+          <div class="glass-subcard rounded-2xl p-5 text-left grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm mt-4">
+            <div>
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-inkdark/55">Official YouTube</span>
+              <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer" class="font-semibold text-inkdark hover:text-amber-600 transition">
+                https://www.youtube.com/@SabawianProduction
+              </a>
+            </div>
+            <div>
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-inkdark/55">Official Website</span>
+              <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-inkdark hover:text-amber-600 transition">
+                https://sabawian.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPACT STUDIO FOOTER INSIDE THE GLASS STAGE -->
+      <footer class="mt-8 pt-5 border-t border-inkdark/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-inkdark/65">
+        <div class="font-medium">
+          <span class="font-display font-bold text-inkdark">Sabawian Production</span> &bull; Stories. Visual Effects. Innovation.
+        </div>
+        <div>
+          &copy; <span id="year-display"></span> <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="hover:text-inkdark font-medium">sabawian.com</a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- EMBEDDED YOUTUBE PLAYER MODAL -->
+  <div id="yt-modal" role="dialog" aria-modal="true" aria-labelledby="yt-modal-title"
+       class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-inkdark/75 backdrop-blur-md">
+    <div class="w-full max-w-4xl glass-window rounded-3xl overflow-hidden p-4 sm:p-6">
+      <div class="flex items-center justify-between gap-4 pb-3 mb-3 border-b border-inkdark/10">
+        <div class="min-w-0">
+          <span id="yt-modal-badge" class="text-[10px] font-bold uppercase tracking-wider text-amber-600">SHOWREEL</span>
+          <h3 id="yt-modal-title" class="font-display font-bold text-sm sm:text-base text-inkdark truncate">Sabawian Production</h3>
+        </div>
+        <button id="yt-modal-close" type="button" aria-label="Close Video Player"
+                class="w-8 h-8 rounded-full bg-white/80 hover:bg-white text-inkdark flex items-center justify-center border border-inkdark/10 transition cursor-pointer shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black">
+        <iframe id="yt-iframe" class="absolute inset-0 w-full h-full" src="" title="YouTube Video Player"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year-display').textContent = new Date().getFullYear();
+
+    // =========================================================================
+    // 1. STANDALONE PAGE SWITCHER (No One-Long-Scroll)
+    // =========================================================================
+    const pageNames = ['home', 'portfolio', 'films', 'services', 'studio', 'saba-ai', 'contact'];
+    const navButtons = document.querySelectorAll('.nav-page-link');
+    const pageViews = document.querySelectorAll('.page-view');
+    const mobileDrawer = document.getElementById('mobile-page-drawer');
+    const mobileToggle = document.getElementById('mobile-nav-toggle');
+
+    function navigateTo(pageName) {
+      if (!pageNames.includes(pageName)) pageName = 'home';
+
+      pageViews.forEach((view) => {
+        view.classList.toggle('is-active', view.id === `page-${pageName}`);
+      });
+
+      navButtons.forEach((btn) => {
+        btn.classList.toggle('is-active', btn.getAttribute('data-page') === pageName);
+      });
+
+      // Close mobile drawer if open
+      mobileDrawer.classList.add('hidden');
+      mobileDrawer.classList.remove('flex');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navButtons.forEach((btn) => {
+      btn.addEventListener('click', () => navigateTo(btn.getAttribute('data-page')));
+    });
+
+    mobileToggle.addEventListener('click', () => {
+      const open = mobileDrawer.classList.contains('hidden');
+      mobileDrawer.classList.toggle('hidden', !open);
+      mobileDrawer.classList.toggle('flex', open);
+      mobileToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // =========================================================================
+    // 2. PORTFOLIO DATA & AUTOMATIC YOUTUBE THUMBNAILS
+    // =========================================================================
+    const vfxVideos = [
+      { id: 'fWhgbiprHyg', title: 'Visual Effects Showcase I', label: 'VFX • Compositing' },
+      { id: 'tmDRNr2lDUk', title: 'Visual Effects Showcase II', label: 'VFX • Environments' },
+      { id: '3Mf4uSU_eeY', title: 'Visual Effects Showcase III', label: 'VFX • Simulations' },
+      { id: 'H5nXdSzDoJE', title: 'Visual Effects Showcase IV', label: 'VFX • Lighting' },
+      { id: 'bOZHn0yjgtM', title: 'Visual Effects Showcase V', label: 'VFX • Motion' }
+    ];
+
+    const commercialVideos = [
+      { id: 'bxaCHPbpW9I', title: 'Commercial Production I', label: 'Commercial' },
+      { id: 'tP7ruLixrRM', title: 'Commercial Production II', label: 'Commercial' },
+      { id: 'o22-h4DjT7o', title: 'Commercial Production III', label: 'Commercial' }
+    ];
+
+    function buildVideoCard(video, categoryLabel) {
+      const card = document.createElement('article');
+      card.className = 'glass-subcard rounded-2xl overflow-hidden group cursor-pointer flex flex-col justify-between';
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `Play ${video.title}`);
+
+      const maxThumb = `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`;
+      const fallbackThumb = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+
+      card.innerHTML = `
+        <div class="relative aspect-video w-full overflow-hidden bg-inkdark/10">
+          <img src="${maxThumb}"
+               onerror="this.onerror=null;this.src='${fallbackThumb}';"
+               alt="${video.title}"
+               loading="lazy"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-inkdark/25 group-hover:bg-inkdark/15 transition-colors flex items-center justify-center">
+            <span class="w-11 h-11 rounded-full bg-white/90 text-inkdark flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-amber-400">
+              <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="p-4">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">${video.label}</span>
+          <h4 class="font-display font-bold text-sm text-inkdark mt-0.5 group-hover:text-amber-700 transition-colors">${video.title}</h4>
+        </div>
+      `;
+
+      const launch = () => openVideoModal(video.id, video.title, categoryLabel);
+      card.addEventListener('click', launch);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          launch();
+        }
+      });
+
+      return card;
+    }
+
+    const vfxContainer = document.getElementById('portfolio-vfx-cards');
+    const commContainer = document.getElementById('portfolio-commercial-cards');
+    vfxVideos.forEach((v) => vfxContainer.appendChild(buildVideoCard(v, 'VISUAL EFFECTS')));
+    commercialVideos.forEach((v) => commContainer.appendChild(buildVideoCard(v, 'COMMERCIAL PROJECT')));
+
+    // Portfolio Filter Buttons
+    document.querySelectorAll('.pfilter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pfilter-btn').forEach((b) => {
+          b.classList.remove('bg-inkdark', 'text-white', 'font-semibold');
+          b.classList.add('text-inkdark/75', 'font-medium');
+        });
+        btn.classList.add('bg-inkdark', 'text-white', 'font-semibold');
+        btn.classList.remove('text-inkdark/75', 'font-medium');
+
+        const mode = btn.getAttribute('data-pfilter');
+        document.getElementById('p-group-vfx').classList.toggle('hidden', mode === 'commercial');
+        document.getElementById('p-group-commercial').classList.toggle('hidden', mode === 'vfx');
+      });
+    });
+
+    // =========================================================================
+    // 3. FILMS PAGE (Streaming-Style Widescreen Showcase)
+    // =========================================================================
+    const filmItems = [
+      {
+        badge: 'FEATURE FILM',
+        format: '4K WIDESCREEN • CINEMA',
+        title: 'Chronicles of Light & Shadow',
+        desc: 'Atmospheric narrative filmmaking combining expressive cinematography, digital environments, and refined visual storytelling.',
+        credits: 'Direction • Cinematography • VFX',
+        videoId: 'tmDRNr2lDUk',
+        accentA: '#F59E0B',
+        accentB: '#2563EB'
+      },
+      {
+        badge: 'SCI-FI CINEMA',
+        format: 'ANAMORPHIC • DIGITAL WORLD',
+        title: 'Horizons Beyond Tomorrow',
+        desc: 'Immersive worldbuilding and visual effects crafted for high-impact sci-fi storytelling and modern screen formats.',
+        credits: 'Visual Effects • Production • Post',
+        videoId: 'fWhgbiprHyg',
+        accentA: '#8B5CF6',
+        accentB: '#38BDF8'
+      },
+      {
+        badge: 'VISUAL STORY',
+        format: 'HDR FINISH • SOUND DESIGN',
+        title: 'Echoes of Heritage',
+        desc: 'Rich visual narratives honoring timeless architecture, dramatic lighting, and emotional pacing.',
+        credits: 'Film Production • Editing • Color',
+        videoId: '3Mf4uSU_eeY',
+        accentA: '#EC4899',
+        accentB: '#F59E0B'
+      }
+    ];
+
+    function renderFilmBannerSVG(item) {
+      return `
+        <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+          <defs>
+            <linearGradient id="fg-${item.videoId}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1E241B" />
+              <stop offset="55%" stop-color="#2D3529" />
+              <stop offset="100%" stop-color="${item.accentA}" stop-opacity="0.55" />
+            </linearGradient>
+            <radialGradient id="fl-${item.videoId}" cx="65%" cy="42%" r="45%">
+              <stop offset="0%" stop-color="${item.accentB}" stop-opacity="0.65" />
+              <stop offset="100%" stop-color="#1E241B" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="640" height="320" fill="url(#fg-${item.videoId})" />
+          <circle cx="420" cy="135" r="150" fill="url(#fl-${item.videoId})" />
+          <polygon points="0,320 0,220 155,165 310,225 470,150 640,215 640,320" fill="#121610" opacity="0.88" />
+          <rect x="18" y="18" width="604" height="284" rx="14" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" />
+        </svg>
+      `;
+    }
+
+    function setActiveFilm(index) {
+      const item = filmItems[index];
+      document.getElementById('active-film-badge').textContent = item.badge;
+      document.getElementById('active-film-format').textContent = item.format;
+      document.getElementById('active-film-title').textContent = item.title;
+      document.getElementById('active-film-desc').textContent = item.desc;
+      document.getElementById('active-film-credits').textContent = item.credits;
+      document.getElementById('active-film-visual').innerHTML = renderFilmBannerSVG(item);
+      document.getElementById('active-film-play').onclick = () =>
+        openVideoModal(item.videoId, `${item.title} — Film Preview`, 'FILM PRODUCTION');
+
+      document.querySelectorAll('.film-tab-card').forEach((el, i) => {
+        el.classList.toggle('ring-2', i === index);
+        el.classList.toggle('ring-amber-500', i === index);
+      });
+    }
+
+    const filmTabsRow = document.getElementById('film-tabs-row');
+    filmItems.forEach((item, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'film-tab-card glass-subcard rounded-2xl overflow-hidden text-left cursor-pointer group';
+      btn.innerHTML = `
+        <div class="h-28 w-full overflow-hidden">
+          ${renderFilmBannerSVG(item)}
+        </div>
+        <div class="p-3.5">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">${item.badge}</p>
+          <p class="font-display font-bold text-sm text-inkdark mt-0.5 group-hover:text-amber-700 transition-colors">${item.title}</p>
+        </div>
+      `;
+      btn.addEventListener('click', () => setActiveFilm(idx));
+      filmTabsRow.appendChild(btn);
+    });
+    setActiveFilm(0);
+
+    // =========================================================================
+    // 4. SERVICES PAGE (6 Capabilities with 3D Hover Tilt)
+    // =========================================================================
+    const studioServices = [
+      {
+        title: 'Film Production',
+        desc: 'Narrative films and creative visual productions from concept and directing through final finishing.',
+        tag: 'Cinema'
+      },
+      {
+        title: 'Visual Effects',
+        desc: 'Seamless compositing, 3D environments, digital integration, and atmospheric visual effects.',
+        tag: 'VFX'
+      },
+      {
+        title: 'Video Editing',
+        desc: 'Thoughtful editorial storytelling, pacing, color grading, and polished post-production.',
+        tag: 'Editorial'
+      },
+      {
+        title: 'Commercial Production',
+        desc: 'Engaging brand films and commercial productions crafted to stand out on modern screens.',
+        tag: 'Commercial'
+      },
+      {
+        title: 'Creative Technology',
+        desc: 'Motion graphics, real-time visual systems, and modern digital production workflows.',
+        tag: 'Innovation'
+      },
+      {
+        title: 'AI Storytelling',
+        desc: 'Digital characters, AI-powered narratives, and immersive creative experiences with Saba AI.',
+        tag: 'Saba AI'
+      }
+    ];
+
+    const servicesGrid = document.getElementById('services-cards-grid');
+    studioServices.forEach((srv, index) => {
+      const card = document.createElement('div');
+      card.className = 'glass-subcard service-tilt-card rounded-2xl p-5 flex flex-col justify-between space-y-4';
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="w-8 h-8 rounded-full bg-amber-500/15 text-amber-700 font-display font-extrabold text-xs flex items-center justify-center">
+            0${index + 1}
+          </span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-inkdark/55">${srv.tag}</span>
+        </div>
+        <div class="space-y-1.5">
+          <h3 class="font-display font-bold text-base text-inkdark">${srv.title}</h3>
+          <p class="text-xs sm:text-sm text-inkdark/75 leading-relaxed">${srv.desc}</p>
+        </div>
+      `;
+
+      // Smooth 3D hover tilt
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+      });
+
+      servicesGrid.appendChild(card);
+    });
+
+    // =========================================================================
+    // 5. YOUTUBE MODAL CONTROLS
+    // =========================================================================
+    const ytModal = document.getElementById('yt-modal');
+    const ytIframe = document.getElementById('yt-iframe');
+    const ytTitle = document.getElementById('yt-modal-title');
+    const ytBadge = document.getElementById('yt-modal-badge');
+    const ytCloseBtn = document.getElementById('yt-modal-close');
+
+    function openVideoModal(videoId, title, badge) {
+      ytTitle.textContent = title;
+      ytBadge.textContent = badge || 'SHOWCASE';
+      ytIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      ytModal.classList.remove('hidden');
+      ytModal.classList.add('flex');
+      ytCloseBtn.focus();
+    }
+
+    function closeVideoModal() {
+      ytIframe.src = '';
+      ytModal.classList.add('hidden');
+      ytModal.classList.remove('flex');
+    }
+
+    ytCloseBtn.addEventListener('click', closeVideoModal);
+    ytModal.addEventListener('click', (e) => {
+      if (e.target === ytModal) closeVideoModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !ytModal.classList.contains('hidden')) {
+        closeVideoModal();
+      }
+    });
+
+    // =========================================================================
+    // 6. CURSOR + SCROLL REACTIVE 3D SPHERES
+    // =========================================================================
+    const spheres = Array.from(document.querySelectorAll('.ref-sphere')).map((el) => ({
+      el,
+      depth: parseFloat(el.getAttribute('data-depth') || '0.06') * 520,
+      scrollFactor: parseFloat(el.getAttribute('data-scroll') || '0.14'),
+      phase: parseFloat(el.getAttribute('data-phase') || '0'),
+      curX: 0,
+      curY: 0
+    }));
+
+    let pointerX = 0;
+    let pointerY = 0;
+    let targetScroll = window.scrollY || 0;
+    let smoothScroll = targetScroll;
+
+    window.addEventListener('mousemove', (e) => {
+      pointerX = (e.clientX / window.innerWidth - 0.5) * 2;
+      pointerY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        pointerX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        pointerY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      }
+    }, { passive: true });
+
+    window.addEventListener('scroll', () => {
+      targetScroll = window.scrollY || 0;
+    }, { passive: true });
+
+    function animateSpheres(now) {
+      const t = now * 0.001;
+      smoothScroll += (targetScroll - smoothScroll) * 0.08;
+
+      for (let i = 0; i < spheres.length; i++) {
+        const s = spheres[i];
+        const driftX = Math.cos(t * 0.65 + s.phase) * 10;
+        const driftY = Math.sin(t * 0.75 + s.phase) * 12;
+
+        const goalX = pointerX * s.depth + driftX;
+        const goalY = pointerY * s.depth + (smoothScroll * s.scrollFactor) + driftY;
+
+        s.curX += (goalX - s.curX) * 0.08;
+        s.curY += (goalY - s.curY) * 0.08;
+
+        s.el.style.transform = `translate3d(${s.curX.toFixed(2)}px, ${s.curY.toFixed(2)}px, 0)`;
+      }
+
+      requestAnimationFrame(animateSpheres);
+    }
+    requestAnimationFrame(animateSpheres);
+  </script>
+</body>
+</html>

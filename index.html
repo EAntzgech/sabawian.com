@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabawian Production | Stories. Visual Effects. Innovation.</title>
-  <meta name="description" content="Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI-Powered Storytelling." />
+  <meta name="description" content="Sabawian Production creates films, visual effects, wedding films, documentaries, event coverage, and commercial content. Explore our upcoming original film and Gebeta game." />
   <meta name="keywords" content="Sabawian Production, Visual Effects, VFX, Film Production, Commercial Production, Saba AI, Creative Technology, Post Production, sabawian.com" />
   <meta name="author" content="Sabawian Production" />
   <link rel="canonical" href="https://sabawian.com" />
@@ -13,38 +13,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sabawian.com" />
   <meta property="og:title" content="Sabawian Production — Stories. Visual Effects. Innovation." />
-  <meta property="og:description" content="Over 10 years of industry experience delivering theatrical visual effects, commercial campaigns, narrative film production, and AI-driven storytelling pipelines." />
+  <meta property="og:description" content="Film, visual effects, weddings, documentaries, and events. Discover Sabawian's original film in pre-production and the upcoming Gebeta game." />
 
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              lime: '#a6ff3e',
-              lemon: '#f8ff82',
-              mint: '#c6ff83',
-              neon: '#88ff2b',
-              ink: '#0c1808',
-              forest: '#162910',
-              moss: '#2a4520',
-            },
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="./studio-utilities.css">
 
   <style>
     :root {
@@ -302,24 +278,9 @@
       background: rgba(12, 24, 8, 0.6);
     }
   </style>
+  <link rel="stylesheet" href="./studio-polish.css">
 </head>
-<body class="selection:bg-brand-ink selection:text-brand-lemon">
-
-  <!-- Interactive Cursor & Page-Shift 3D Spheres Stage -->
-  <div id="viewport-sphere-stage" aria-hidden="true">
-    <div data-cursor-depth="0.08" data-orbit="1.0"
-         class="ambient-sphere sphere-neon-lime w-56 h-56 sm:w-80 sm:h-80 top-[6%] -left-16 sm:left-[2%] opacity-95"></div>
-    <div data-cursor-depth="-0.07" data-orbit="1.15"
-         class="ambient-sphere sphere-emerald-glass w-44 h-44 sm:w-64 sm:h-64 top-[4%] right-[4%] sm:right-[10%] opacity-90"></div>
-    <div data-cursor-depth="0.065" data-orbit="0.9"
-         class="ambient-sphere sphere-solar-lemon w-52 h-52 sm:w-76 sm:h-76 bottom-[4%] -right-12 sm:right-[3%] opacity-95"></div>
-    <div data-cursor-depth="-0.085" data-orbit="1.25"
-         class="ambient-sphere sphere-obsidian-emerald w-40 h-40 sm:w-60 sm:h-60 bottom-[3%] left-[12%] sm:left-[24%] opacity-85"></div>
-    <div data-cursor-depth="0.1" data-orbit="1.35"
-         class="ambient-sphere sphere-neon-lime w-20 h-20 sm:w-28 sm:h-28 top-[46%] left-[3%] opacity-90"></div>
-    <div data-cursor-depth="-0.095" data-orbit="1.2"
-         class="ambient-sphere sphere-solar-lemon w-16 h-16 sm:w-24 sm:h-24 top-[32%] right-[3%] opacity-90"></div>
-  </div>
+<body class="studio-site selection:bg-brand-ink selection:text-brand-lemon">
 
   <!-- Main Centered Frosted Glass Window Container (Reference Architecture) -->
   <main class="relative z-10 min-h-screen flex items-center justify-center p-3 sm:p-6 lg:p-10">
@@ -359,7 +320,7 @@
         <!-- Right Executive Action & Mobile Toggle -->
         <div class="flex items-center gap-2.5">
           <button type="button" onclick="navigateTo('contact')" class="btn-pill-frosted px-4 sm:px-5 py-2 text-xs sm:text-sm cursor-pointer">
-            Producer Desk
+            Contact
           </button>
           <button id="mobile-nav-toggle" type="button" aria-label="Open Navigation Menu" aria-expanded="false"
                   class="lg:hidden p-2.5 rounded-full bg-white/70 border border-white text-brand-ink hover:bg-white transition cursor-pointer">
@@ -383,153 +344,7 @@
       <!-- ===================================================================== -->
       <!-- PAGE 1: HOME (Executive Studio Overview & Centerpiece Visual)         -->
       <!-- ===================================================================== -->
-      <section id="page-home" class="studio-page active py-8 sm:py-12 my-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          <!-- Left Column: Studio Positioning & Actions -->
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/75 border border-white text-xs font-bold tracking-[0.18em] uppercase text-brand-ink shadow-sm">
-              <span class="w-2 h-2 rounded-full bg-brand-neon ring-2 ring-brand-ink/20"></span>
-              <span>Stories &bull; Visual Effects &bull; Innovation</span>
-            </div>
-
-            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-brand-ink">
-              SABAWIAN<br />
-              <span class="inline-block px-3 py-0.5 mt-1 rounded-2xl bg-brand-ink text-brand-lemon">PRODUCTION</span>
-            </h1>
-
-            <p class="text-base sm:text-lg font-bold text-brand-forest tracking-wide">
-              Visual Effects &bull; Film Production &bull; Digital Innovation
-            </p>
-
-            <p class="text-sm sm:text-base text-brand-forest/90 leading-relaxed max-w-xl font-normal">
-              Over 10 years of industry experience delivering theatrical visual effects, commercial campaigns, narrative film production, and AI-driven storytelling pipelines for producers, agencies, and global brands.
-            </p>
-
-            <!-- Primary Pill CTAs -->
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                type="button"
-                onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Visual Effects & Studio Showreel', 'VISUAL EFFECTS REEL')"
-                class="btn-pill-primary px-7 py-3.5 text-sm sm:text-base inline-flex items-center gap-2.5 cursor-pointer"
-              >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span>Watch Studio Reel</span>
-              </button>
-
-              <button
-                type="button"
-                onclick="navigateTo('portfolio')"
-                class="btn-pill-frosted px-7 py-3.5 text-sm sm:text-base inline-flex items-center gap-2 cursor-pointer"
-              >
-                <span>Explore Portfolio</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </div>
-
-            <!-- Executive Credentials Strip -->
-            <div class="pt-4 grid grid-cols-3 gap-3 max-w-lg">
-              <div class="glass-card rounded-2xl p-3.5">
-                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">10+ Yrs</p>
-                <p class="text-[11px] font-medium text-brand-moss">Studio Track Record</p>
-              </div>
-              <div class="glass-card rounded-2xl p-3.5">
-                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">VFX &amp; Film</p>
-                <p class="text-[11px] font-medium text-brand-moss">End-to-End Pipeline</p>
-              </div>
-              <div class="glass-card rounded-2xl p-3.5">
-                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">Saba AI</p>
-                <p class="text-[11px] font-medium text-brand-moss">Next-Gen R&amp;D Lab</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Bespoke Architectural & Cinema Optics Centerpiece (Zero Placeholders) -->
-          <div class="lg:col-span-5 flex flex-col items-center justify-center">
-            <div class="relative w-full max-w-md rounded-[28px] bg-gradient-to-b from-brand-ink via-[#13240d] to-[#081005] border border-white/80 p-6 shadow-2xl overflow-hidden group cursor-pointer"
-                 onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Visual Effects & Studio Showreel', 'VISUAL EFFECTS REEL')">
-
-              <!-- Ambient Lime & Lemon Volumetric Backlight -->
-              <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-brand-lime/25 blur-3xl pointer-events-none"></div>
-              <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-brand-lemon/20 blur-3xl pointer-events-none"></div>
-
-              <!-- Top Telemetry Bar -->
-              <div class="relative z-10 flex items-center justify-between text-[11px] font-semibold tracking-widest uppercase text-brand-mint/85 mb-3">
-                <span>REEL // MASTER</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-brand-lime/20 text-brand-lemon border border-brand-lime/40">4K HDR</span>
-              </div>
-
-              <!-- Architectural Monoliths & Anamorphic Cinema Optics Illustration -->
-              <svg viewBox="0 0 460 300" class="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" aria-label="Sabawian Production Architectural & Cinema Visual">
-                <defs>
-                  <linearGradient id="monolithLime" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f8ff82" />
-                    <stop offset="48%" stop-color="#a6ff3e" />
-                    <stop offset="100%" stop-color="#1e3a12" />
-                  </linearGradient>
-                  <linearGradient id="monolithGlass" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
-                    <stop offset="55%" stop-color="#c6ff83" stop-opacity="0.5" />
-                    <stop offset="100%" stop-color="#0c1808" stop-opacity="0.95" />
-                  </linearGradient>
-                  <linearGradient id="waterReflect" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#a6ff3e" stop-opacity="0.38" />
-                    <stop offset="100%" stop-color="#081005" stop-opacity="0" />
-                  </linearGradient>
-                  <radialGradient id="opticGlow" cx="50%" cy="42%" r="48%">
-                    <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.48" />
-                    <stop offset="55%" stop-color="#88ff2b" stop-opacity="0.16" />
-                    <stop offset="100%" stop-color="#081005" stop-opacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <ellipse cx="230" cy="140" rx="185" ry="105" fill="url(#opticGlow)" />
-                <line x1="32" y1="122" x2="428" y2="122" stroke="#a6ff3e" stroke-opacity="0.55" stroke-width="1.5" />
-                <circle cx="230" cy="122" r="4.5" fill="#f8ff82" />
-
-                <!-- Architectural Towers -->
-                <polygon points="105,196 105,108 128,94 128,196" fill="url(#monolithGlass)" />
-                <polygon points="128,196 128,94 146,106 146,196" fill="#14260e" />
-
-                <polygon points="154,196 154,78 180,64 180,196" fill="url(#monolithLime)" />
-                <polygon points="180,196 180,64 202,80 202,196" fill="#182b11" />
-
-                <polygon points="210,196 210,40 238,24 238,196" fill="url(#monolithGlass)" />
-                <polygon points="238,196 238,24 264,44 264,196" fill="url(#monolithLime)" opacity="0.92" />
-                <line x1="238" y1="12" x2="238" y2="24" stroke="#f8ff82" stroke-width="2" />
-
-                <polygon points="272,196 272,72 300,60 300,196" fill="url(#monolithGlass)" />
-                <polygon points="300,196 300,60 324,78 324,196" fill="#14260e" />
-
-                <polygon points="332,196 332,110 355,100 355,196" fill="url(#monolithLime)" opacity="0.88" />
-
-                <line x1="65" y1="196" x2="395" y2="196" stroke="rgba(248,255,130,0.35)" stroke-width="1" />
-
-                <!-- Water Reflection -->
-                <g opacity="0.6" transform="translate(0, 392) scale(1, -0.45)">
-                  <polygon points="105,196 105,108 146,106 146,196" fill="url(#waterReflect)" />
-                  <polygon points="154,196 154,78 202,80 202,196" fill="url(#waterReflect)" />
-                  <polygon points="210,196 210,40 264,44 264,196" fill="url(#waterReflect)" />
-                  <polygon points="272,196 272,72 324,78 324,196" fill="url(#waterReflect)" />
-                  <polygon points="332,196 332,110 355,100 355,196" fill="url(#waterReflect)" />
-                </g>
-              </svg>
-
-              <!-- Interactive Reel Trigger Bar -->
-              <div class="relative z-10 mt-2 flex items-center justify-between bg-white/10 backdrop-blur-md border border-brand-lime/30 rounded-2xl px-4 py-3">
-                <div>
-                  <p class="text-[10px] uppercase tracking-widest text-brand-lemon font-bold">Official Studio Reel</p>
-                  <p class="text-xs text-white font-medium">Visual Effects &amp; Compositing</p>
-                </div>
-                <span class="w-10 h-10 rounded-full bg-brand-lime text-brand-ink flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section id="page-home" class="studio-page active"><div class="studio-hero"><div><p class="studio-eyebrow">Independent Studio · Film, VFX &amp; Production</p><h1>Stories worth seeing.<br><span>Moments worth keeping.</span></h1><p class="studio-hero-copy">From original films and visual effects to weddings, documentaries, and events, we bring a cinematic eye to every story we tell.</p><div class="studio-actions"><button class="btn-pill-primary" type="button" onclick="navigateTo('contact')">Start a Project <span aria-hidden="true">↗</span></button><button class="btn-pill-frosted" type="button" onclick="navigateTo('portfolio')">View Our Work</button></div><div class="studio-proof"><span>10+ Years of Experience</span><span>Production + Post-Production</span></div></div><button class="studio-reel" type="button" onclick="openVideoModal('fWhgbiprHyg','Sabawian Production — Studio Showreel','STUDIO REEL')" aria-label="Watch the Sabawian studio showreel"><img src="https://i.ytimg.com/vi/fWhgbiprHyg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/fWhgbiprHyg/hqdefault.jpg';" alt="A frame from the Sabawian visual effects showreel" width="1280" height="720" fetchpriority="high"><span class="studio-reel-label">SABAWIAN / SELECTED WORK</span><span class="studio-reel-bottom"><span><strong>Stories. Visual Effects. Innovation.</strong><small>Watch the studio showreel</small></span><span class="studio-play" aria-hidden="true">▶</span></span></button></div><div class="studio-home-services"><div class="studio-section-head"><div><p class="studio-eyebrow">What We Do</p><h2>One studio. Many ways to tell a story.</h2></div><button class="studio-link" type="button" onclick="navigateTo('services')">Explore Our Services <span aria-hidden="true">↗</span></button></div><div class="studio-service-pills"><button type="button" onclick="navigateTo('services')">Film &amp; VFX</button><button type="button" onclick="navigateTo('services')">Weddings</button><button type="button" onclick="navigateTo('services')">Documentaries</button><button type="button" onclick="navigateTo('services')">Events</button><button type="button" onclick="navigateTo('services')">Commercials</button><button type="button" onclick="navigateTo('services')">Editing &amp; Finishing</button></div></div><div class="studio-coming"><div class="studio-section-head"><div><p class="studio-eyebrow">On the Horizon</p><h2>Our next chapter.</h2></div><p>Original stories for the screen and beyond. Discover what we are creating next.</p></div><div class="studio-project-grid"><article class="studio-project" data-project="film"><div class="studio-project-art"><svg viewBox="0 0 800 460" role="img" aria-label="Original Sabawian feature film in pre-production"><defs><radialGradient id="slateGlowHome"><stop stop-color="#6b8050"/><stop offset="1" stop-color="#14231a"/></radialGradient></defs><rect width="800" height="460" fill="#14231a"/><circle cx="590" cy="140" r="280" fill="url(#slateGlowHome)" opacity=".65"/><path d="M0 370L800 190M0 410L800 230" stroke="#c9f779" opacity=".08"/><g transform="translate(265 105) rotate(-7 140 120)"><rect x="0" y="68" width="270" height="180" rx="15" fill="#20372b" stroke="#8b9f77"/><path d="M0 68H270V19Q270 8 258 8H12Q0 8 0 19Z" fill="#c9f779"/><path d="M35 8L5 68M105 8L75 68M175 8L145 68M245 8L215 68" stroke="#20372b" stroke-width="24"/><path d="M25 125H245M25 181H245" stroke="#617655" opacity=".6"/><text x="25" y="113" fill="#d7e5ca" font-family="sans-serif" font-size="11" letter-spacing="3">SABAWIAN PRODUCTION</text><text x="25" y="161" fill="#f3f7ed" font-family="sans-serif" font-size="24" font-weight="600">ORIGINAL FEATURE</text><text x="25" y="220" fill="#b6c6a4" font-family="sans-serif" font-size="12" letter-spacing="3">IN PRE-PRODUCTION</text></g><text x="42" y="416" fill="#b6c6a4" font-family="sans-serif" font-size="10" letter-spacing="4">A NEW STORY IS TAKING SHAPE</text></svg><span class="studio-badge">Coming Soon</span></div><div class="studio-project-content"><span class="studio-eyebrow">Original Cinema</span><h3>An Original Sabawian Film</h3><p>A new feature film is taking shape at Sabawian Production. The project is in pre-production, with its title and further details to be announced.</p><button class="studio-link" type="button" onclick="navigateTo('films')">Explore the project <span aria-hidden="true">↗</span></button></div></article><article class="studio-project" data-project="game"><div class="studio-project-art"><img src="./gebeta-coming-soon.png" alt="Gebeta royal game artwork" width="1672" height="941" loading="lazy" decoding="async"><span class="studio-badge">Coming Soon</span></div><div class="studio-project-content"><span class="studio-eyebrow">Interactive Entertainment</span><h3>Gebeta — by Sabawian</h3><p>Strategy, wisdom, and a royal journey inspired by the world of Saba. Our original game is in development and coming soon.</p><button class="studio-link" type="button" onclick="navigateTo('films')">Explore the project <span aria-hidden="true">↗</span></button></div></article></div></div></section>
 
       <!-- ===================================================================== -->
       <!-- PAGE 2: PORTFOLIO (Visual Effects + Commercial Projects)              -->
@@ -592,126 +407,7 @@
       <!-- PAGE 3: PRODUCTION & FILM (3 Production Works + Suspense Feature)     -->
       <!-- ===================================================================== -->
       <section id="page-films" class="studio-page py-8 sm:py-10 space-y-12">
-        <!-- THEATRICAL SUSPENSE POSTER: UPCOMING FEATURE FILM IN PRODUCTION -->
-        <div class="suspense-poster rounded-[30px] p-6 sm:p-10 lg:p-12 text-white">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            <!-- Left: Theatrical One-Sheet Artwork -->
-            <div class="lg:col-span-5 flex justify-center">
-              <div class="relative w-full max-w-[340px] aspect-[2/3] rounded-2xl overflow-hidden border border-brand-lime/45 shadow-2xl bg-[#050a03] flex flex-col justify-between p-6 select-none">
-                <!-- Dramatic Volumetric Light Cone & Silhouette SVG -->
-                <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
-                  <defs>
-                    <radialGradient id="suspenseMoon" cx="50%" cy="26%" r="46%">
-                      <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.95" />
-                      <stop offset="28%" stop-color="#a6ff3e" stop-opacity="0.48" />
-                      <stop offset="68%" stop-color="#142b0c" stop-opacity="0.2" />
-                      <stop offset="100%" stop-color="#040803" stop-opacity="0" />
-                    </radialGradient>
-                    <linearGradient id="lightShaft" x1="50%" y1="15%" x2="50%" y2="100%">
-                      <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.45" />
-                      <stop offset="55%" stop-color="#88ff2b" stop-opacity="0.12" />
-                      <stop offset="100%" stop-color="#040803" stop-opacity="0" />
-                    </linearGradient>
-                  </defs>
-
-                  <rect width="400" height="600" fill="#040803" />
-                  <circle cx="200" cy="160" r="185" fill="url(#suspenseMoon)" class="poster-beam" />
-                  <!-- Volumetric Beam Cone -->
-                  <polygon points="200,155 55,600 345,600" fill="url(#lightShaft)" />
-
-                  <!-- Eclipse Ring -->
-                  <circle cx="200" cy="160" r="54" fill="#050a03" stroke="#f8ff82" stroke-width="1.5" stroke-opacity="0.85" />
-                  <circle cx="200" cy="160" r="68" fill="none" stroke="#a6ff3e" stroke-width="0.75" stroke-dasharray="4 6" stroke-opacity="0.6" />
-
-                  <!-- Anamorphic Lens Flare -->
-                  <line x1="20" y1="160" x2="380" y2="160" stroke="#f8ff82" stroke-width="1.2" stroke-opacity="0.65" />
-
-                  <!-- Distant Monolithic Horizon -->
-                  <polygon points="0,470 95,435 165,455 200,415 240,455 310,430 400,468 400,600 0,600" fill="#081105" />
-
-                  <!-- Lone Investigator / Protagonist Silhouette Standing in Beam -->
-                  <ellipse cx="200" cy="512" rx="34" ry="6" fill="#000000" opacity="0.85" />
-                  <path d="M193,452 C193,446 207,446 207,452 L211,482 L206,512 L201,512 L200,486 L199,512 L194,512 L189,482 Z" fill="#030602" />
-                  <circle cx="200" cy="442" r="5.5" fill="#030602" />
-                </svg>
-
-                <!-- Top Poster Header -->
-                <div class="relative z-10 text-center space-y-1">
-                  <p class="text-[9px] font-bold tracking-[0.34em] uppercase text-brand-lemon/90">
-                    SABAWIAN PRODUCTION PRESENTS
-                  </p>
-                  <p class="text-[10px] tracking-[0.22em] uppercase text-white/60">
-                    AN ORIGINAL FEATURE FILM
-                  </p>
-                </div>
-
-                <!-- Bottom Theatrical Title & Billing Block -->
-                <div class="relative z-10 text-center space-y-3 pt-28">
-                  <p class="text-[11px] italic text-brand-mint/90 tracking-wide">
-                    &ldquo;Every signal leaves a trace. Some were never meant to be decoded.&rdquo;
-                  </p>
-
-                  <div class="py-2 border-y border-brand-lime/30">
-                    <span class="block text-[10px] font-bold tracking-[0.35em] text-brand-lemon uppercase">
-                      UNTITLED SCI-FI THRILLER
-                    </span>
-                    <h3 class="font-display font-extrabold text-2xl sm:text-3xl tracking-[0.18em] text-white uppercase mt-1">
-                      COMING SOON
-                    </h3>
-                  </div>
-
-                  <!-- Authentic Studio Billing Block -->
-                  <p class="text-[7.5px] leading-relaxed tracking-[0.14em] uppercase text-white/55 font-medium">
-                    SABAWIAN PRODUCTION &bull; PRINCIPAL PHOTOGRAPHY &amp; VISUAL EFFECTS IN PROGRESS &bull; WRITTEN, DIRECTED &amp; PRODUCED BY SABAWIAN PRODUCTION &bull; 4K ANAMORPHIC THEATRICAL MASTER
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Executive Production Slate Briefing -->
-            <div class="lg:col-span-7 space-y-6">
-              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-lime/15 border border-brand-lime/40 text-xs font-bold tracking-[0.2em] uppercase text-brand-lemon">
-                <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
-                <span>In Active Production &bull; Feature Slate</span>
-              </div>
-
-              <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-                Upcoming Feature Film:<br />
-                <span class="text-brand-lime">Currently In Production</span>
-              </h2>
-
-              <p class="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
-                Sabawian Production is currently in active production on an original suspense and speculative-thriller feature film. Combining on-location anamorphic cinematography with proprietary visual effects and atmospheric worldbuilding, the project is being crafted for international theatrical and streaming distribution.
-              </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-1">
-                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
-                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Status</p>
-                  <p class="text-sm font-semibold text-white mt-1">In Production</p>
-                </div>
-                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
-                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Format</p>
-                  <p class="text-sm font-semibold text-white mt-1">Feature Film &bull; 4K HDR</p>
-                </div>
-                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
-                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Studio Role</p>
-                  <p class="text-sm font-semibold text-white mt-1">Production &amp; Lead VFX</p>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap items-center gap-4 pt-2">
-                <button type="button" onclick="requestProducerScreener()" class="btn-pill-lime px-6 py-3 text-xs sm:text-sm cursor-pointer">
-                  Request Producer Deck &amp; Screener Updates
-                </button>
-                <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
-                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-white/90 border border-white/25 hover:bg-white/10 transition">
-                  Follow Teaser Releases on YouTube
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+<div class="studio-page-intro"><p class="studio-eyebrow">Sabawian Originals</p><h2 class="studio-page-title">New stories. New worlds.<br>Coming soon.</h2><p>Explore the original feature film and game currently taking shape at Sabawian. This is where we will share the next chapter as each project develops.</p></div><div class="studio-project-grid studio-detail-grid"><article class="studio-project" data-project="film"><div class="studio-project-art"><svg viewBox="0 0 800 460" role="img" aria-label="Original Sabawian feature film in pre-production"><defs><radialGradient id="slateGlowFilm"><stop stop-color="#6b8050"/><stop offset="1" stop-color="#14231a"/></radialGradient></defs><rect width="800" height="460" fill="#14231a"/><circle cx="590" cy="140" r="280" fill="url(#slateGlowFilm)" opacity=".65"/><path d="M0 370L800 190M0 410L800 230" stroke="#c9f779" opacity=".08"/><g transform="translate(265 105) rotate(-7 140 120)"><rect x="0" y="68" width="270" height="180" rx="15" fill="#20372b" stroke="#8b9f77"/><path d="M0 68H270V19Q270 8 258 8H12Q0 8 0 19Z" fill="#c9f779"/><path d="M35 8L5 68M105 8L75 68M175 8L145 68M245 8L215 68" stroke="#20372b" stroke-width="24"/><path d="M25 125H245M25 181H245" stroke="#617655" opacity=".6"/><text x="25" y="113" fill="#d7e5ca" font-family="sans-serif" font-size="11" letter-spacing="3">SABAWIAN PRODUCTION</text><text x="25" y="161" fill="#f3f7ed" font-family="sans-serif" font-size="24" font-weight="600">ORIGINAL FEATURE</text><text x="25" y="220" fill="#b6c6a4" font-family="sans-serif" font-size="12" letter-spacing="3">IN PRE-PRODUCTION</text></g><text x="42" y="416" fill="#b6c6a4" font-family="sans-serif" font-size="10" letter-spacing="4">A NEW STORY IS TAKING SHAPE</text></svg><span class="studio-badge">Coming Soon</span></div><div class="studio-project-content"><span class="studio-eyebrow">Original Cinema</span><h3>An Original Sabawian Film</h3><p>A new feature film is taking shape at Sabawian Production. The project is in pre-production, with its title and further details to be announced.</p><div class="studio-project-facts"><span>In Pre-Production</span><span>Feature Film</span></div><p class="studio-release-note">Project updates will be shared as pre-production progresses. A release date has not been announced.</p><button class="studio-link" type="button" onclick="requestInquiry('Upcoming Feature Film — Project Inquiry')">Film &amp; collaboration inquiries <span aria-hidden="true">↗</span></button></div></article><article class="studio-project" data-project="game"><div class="studio-project-art"><img src="./gebeta-coming-soon.png" alt="Gebeta royal game artwork" width="1672" height="941" loading="lazy" decoding="async"><span class="studio-badge">Coming Soon</span></div><div class="studio-project-content"><span class="studio-eyebrow">Interactive Entertainment</span><h3>Gebeta — by Sabawian</h3><p>Strategy, wisdom, and a royal journey inspired by the world of Saba. Our original game is in development and coming soon.</p><div class="studio-project-facts"><span>In Development</span><span>Game</span></div><p class="studio-release-note">Launch details will be announced here. A release date has not been announced.</p><button class="studio-link" type="button" onclick="requestInquiry('Gebeta Game Inquiry')">Ask about Gebeta <span aria-hidden="true">↗</span></button></div></article></div>
         <!-- STUDIO PRODUCTION RELEASES (3 Exact Production Videos Specified by User) -->
         <div class="space-y-5">
           <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
@@ -735,128 +431,7 @@
       <!-- ===================================================================== -->
       <!-- PAGE 4: SERVICES (6 Studio Divisions with 3D Tilt Hover Motion)       -->
       <!-- ===================================================================== -->
-      <section id="page-services" class="studio-page py-8 sm:py-10 space-y-10">
-        <div class="max-w-3xl space-y-3">
-          <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Production &amp; Post-Production Capabilities</span>
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-ink tracking-tight">
-            Studio Services &amp; Technical Pipeline
-          </h2>
-          <p class="text-sm sm:text-base text-brand-forest leading-relaxed">
-            Built to integrate seamlessly with executive producers, showrunners, advertising agencies, and creative directors from pre-visualization through final delivery.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- 01 Film Production -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">01 / PRODUCTION</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">Film Production</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                Full-cycle narrative and documentary production including creative development, directing, principal cinematography, and theatrical finishing.
-              </p>
-            </div>
-          </div>
-
-          <!-- 02 Visual Effects -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">02 / VFX &amp; CG</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">Visual Effects</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                Feature-grade compositing, photoreal digital set extensions, environment creation, matchmoving, cleanup, and atmospheric FX simulations.
-              </p>
-            </div>
-          </div>
-
-          <!-- 03 Video Editing -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">03 / EDITORIAL</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">Video Editing &amp; Finishing</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                Offline and online editorial, trailer cutting, color pipeline management, and multi-format mastering for theatrical, broadcast, and streaming delivery.
-              </p>
-            </div>
-          </div>
-
-          <!-- 04 Commercial Production -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">04 / COMMERCIAL</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">Commercial Production</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                High-craft commercial campaigns, brand films, and product launches designed to elevate brand authority with cinematic visual polish.
-              </p>
-            </div>
-          </div>
-
-          <!-- 05 Creative Technology -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">05 / CREATIVE TECH</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">Creative Technology</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                Real-time rendering workflows, motion graphics design systems, virtual production pre-vis, and interactive visual engineering.
-              </p>
-            </div>
-          </div>
-
-          <!-- 06 AI Storytelling -->
-          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
-            <div class="flex items-center justify-between">
-              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <span class="text-xs font-bold tracking-widest text-brand-moss">06 / SABA AI</span>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-display font-bold text-xl text-brand-ink">AI-Powered Storytelling</h3>
-              <p class="text-sm text-brand-forest leading-relaxed">
-                Proprietary generative pre-visualization, digital character R&amp;D, and AI-assisted production tools built specifically for cinema storytellers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section id="page-services" class="studio-page py-8 sm:py-10"><div class="studio-page-intro"><p class="studio-eyebrow">Production &amp; Post-Production</p><h2 class="studio-page-title">Your story, thoughtfully made.</h2><p>Whether you are planning a film, celebrating a wedding, documenting a story, or bringing people together, we can help shape it from the first conversation to the final edit.</p></div><div class="studio-service-grid"><article class="studio-service"><span class="studio-service-number">01 / SABAWIAN</span><h3>Film Production</h3><p>Creative development, directing, cinematography, and post-production support for original films and narrative projects.</p><button class="studio-link" type="button" onclick="requestInquiry('Film Production Inquiry')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">02 / SABAWIAN</span><h3>Wedding Films</h3><p>A thoughtful record of your day, from the intimate moments to the celebration. Wedding films, ceremony coverage, and highlight edits shaped around your story.</p><button class="studio-link" type="button" onclick="requestInquiry('Wedding Film Production')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">03 / SABAWIAN</span><h3>Documentary Production</h3><p>People, places, and ideas brought into focus through research, interviews, documentary filming, and story-driven editing.</p><button class="studio-link" type="button" onclick="requestInquiry('Documentary Production')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">04 / SABAWIAN</span><h3>Event Coverage</h3><p>Capture conferences, cultural events, celebrations, and performances with event films, highlight edits, and coverage for your audience.</p><button class="studio-link" type="button" onclick="requestInquiry('Event Coverage')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">05 / SABAWIAN</span><h3>Commercials &amp; Brand Films</h3><p>Brand stories, campaigns, product films, and promotional content made to connect your message with the right audience.</p><button class="studio-link" type="button" onclick="requestInquiry('Commercial Production Commission')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">06 / SABAWIAN</span><h3>Visual Effects</h3><p>Compositing, digital environments, tracking, cleanup, and visual effects that serve the story from concept through the final frame.</p><button class="studio-link" type="button" onclick="requestInquiry('Feature Film / VFX Bidding')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">07 / SABAWIAN</span><h3>Editing &amp; Post-Production</h3><p>Bring the story together with editing, color finishing, sound coordination, trailers, and delivery for your chosen screen or platform.</p><button class="studio-link" type="button" onclick="requestInquiry('Post-Production & Video Editing')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">08 / SABAWIAN</span><h3>Music Videos</h3><p>Concept development, direction, performance filming, editing, and visual effects for music videos with a distinct creative identity.</p><button class="studio-link" type="button" onclick="requestInquiry('Music Video Production')">Discuss Your Project <span aria-hidden="true">↗</span></button></article><article class="studio-service"><span class="studio-service-number">09 / SABAWIAN</span><h3>Creative Technology &amp; Saba AI</h3><p>Explore new approaches to visual storytelling with motion graphics, pre-visualization, interactive concepts, and AI-assisted creative development.</p><button class="studio-link" type="button" onclick="requestInquiry('Saba AI & Creative Technology Partnership')">Discuss Your Project <span aria-hidden="true">↗</span></button></article></div><div class="studio-process"><h3>A clear path from idea to delivery.</h3><div class="studio-process-grid"><div><strong>01 · Share the idea</strong><p>Tell us what you are creating, your timing, and what matters most.</p></div><div><strong>02 · Shape the approach</strong><p>We discuss the creative direction, scope, and production requirements.</p></div><div><strong>03 · Create &amp; deliver</strong><p>Production and post-production come together around the agreed plan.</p></div></div></div></section>
 
       <!-- ===================================================================== -->
       <!-- PAGE 5: STUDIO / ABOUT (Executive Overview)                           -->
@@ -997,12 +572,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <!-- Left: Official Studio Channels -->
           <div class="lg:col-span-5 space-y-6">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Executive &amp; Production Inquiries</span>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Let’s Talk About Your Project</span>
             <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-ink tracking-tight leading-tight">
               Let's Create Something Extraordinary
             </h2>
             <p class="text-sm sm:text-base text-brand-forest leading-relaxed">
-              Connect with Sabawian Production for feature film visual effects bidding, commercial production commissions, post-production finishing, or producer lookbook requests.
+              Tell us about your film, wedding, documentary, event, or creative project. Share your ideas, location, and timing, and we will discuss how Sabawian can help.
             </p>
 
             <div class="space-y-3 pt-2">
@@ -1043,13 +618,13 @@
             <form id="producer-inquiry-form" class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label for="producer-name" class="block text-xs font-bold text-brand-ink mb-1.5">Name &amp; Title</label>
-                  <input id="producer-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="Name / Executive Producer"
+                  <label for="producer-name" class="block text-xs font-bold text-brand-ink mb-1.5">Your Name</label>
+                  <input id="producer-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="Your name"
                          class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
                 </div>
                 <div>
-                  <label for="producer-email" class="block text-xs font-bold text-brand-ink mb-1.5">Production Email</label>
-                  <input id="producer-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="name@productioncompany.com"
+                  <label for="producer-email" class="block text-xs font-bold text-brand-ink mb-1.5">Email Address</label>
+                  <input id="producer-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com"
                          class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
                 </div>
               </div>
@@ -1059,23 +634,29 @@
                 <select id="inquiry-category" name="engagement_type"
                         class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink font-medium focus:outline-none focus:border-brand-ink transition">
                   <option value="Feature Film / VFX Bidding">Feature Film / Visual Effects Bidding</option>
-                  <option value="Upcoming Feature Film — Producer Screener / Lookbook">Upcoming Feature Film — Producer Screener / Lookbook</option>
+                  <option value="Upcoming Feature Film — Project Inquiry">Upcoming Feature Film — Project Inquiry</option>
                   <option value="Commercial Production Commission">Commercial Production Commission</option>
                   <option value="Post-Production & Video Editing">Post-Production &amp; Video Editing</option>
                   <option value="Saba AI & Creative Technology Partnership">Saba AI &amp; Creative Technology Partnership</option>
-                </select>
+                <option value="Film Production Inquiry">Film Production Inquiry</option>
+<option value="Wedding Film Production">Wedding Film Production</option>
+<option value="Documentary Production">Documentary Production</option>
+<option value="Event Coverage">Event Coverage</option>
+<option value="Music Video Production">Music Video Production</option>
+<option value="Gebeta Game Inquiry">Gebeta Game Inquiry</option>
+</select>
               </div>
 
               <div>
-                <label for="inquiry-details" class="block text-xs font-bold text-brand-ink mb-1.5">Production Brief &amp; Delivery Schedule</label>
-                <textarea id="inquiry-details" name="brief" rows="4" required maxlength="10000" placeholder="Share project scope, shot count or runtime, and target delivery window..."
+                <label for="inquiry-details" class="block text-xs font-bold text-brand-ink mb-1.5">Tell Us About Your Project</label>
+                <textarea id="inquiry-details" name="brief" rows="4" required maxlength="10000" placeholder="What are you planning? Include the location, timing, and any details you would like to share."
                           class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition"></textarea>
               </div>
 
               <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
                 <span id="inquiry-status" class="text-xs font-bold text-brand-forest"></span>
                 <button type="submit" class="btn-pill-primary px-7 py-3 text-sm cursor-pointer w-full sm:w-auto">
-                  Dispatch Production Inquiry
+                  Send Production Inquiry
                 </button>
               </div>
             </form>
@@ -1335,9 +916,10 @@
     // =========================================================================
     // 2. STANDALONE MULTI-PAGE NAVIGATION (No Long Scrolling)
     // =========================================================================
-    let pagePulseBoost = 0;
+    
 
-    function navigateTo(pageKey) {
+    function navigateTo(pageKey, record = true) {
+      if (!['home','portfolio','films','services','studio','saba-ai','contact'].includes(pageKey)) pageKey = 'home';
       document.querySelectorAll('.studio-page').forEach((sec) => {
         sec.classList.remove('active');
       });
@@ -1350,8 +932,10 @@
       document.querySelectorAll('[data-page-target]').forEach((tab) => {
         if (tab.getAttribute('data-page-target') === pageKey) {
           tab.classList.add('active');
+          tab.setAttribute('aria-current','page');
         } else {
           tab.classList.remove('active');
+          tab.removeAttribute('aria-current');
         }
       });
 
@@ -1361,9 +945,8 @@
       drawer.classList.add('hidden');
       toggle.setAttribute('aria-expanded', 'false');
 
-      // Subtle sphere shift impulse when switching pages
-      pagePulseBoost = (Math.random() > 0.5 ? 1 : -1) * 28;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (record && location.hash !== '#' + pageKey) history.pushState(null,'','#'+pageKey);
+      window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
     }
 
     document.querySelectorAll('[data-page-target]').forEach((btn) => {
@@ -1381,15 +964,16 @@
       mobileToggle.setAttribute('aria-expanded', String(isHidden));
     });
 
-    // Pre-fill Contact Page for Upcoming Feature Film Producer Screener Requests
-    function requestProducerScreener() {
+    function requestInquiry(category) {
       navigateTo('contact');
       const categorySelect = document.getElementById('inquiry-category');
-      const detailsField = document.getElementById('inquiry-details');
-      categorySelect.value = 'Upcoming Feature Film — Producer Screener / Lookbook';
-      detailsField.value = 'Requesting executive producer lookbook, production schedule, and private screener updates for Sabawian Production’s upcoming feature film.';
-      detailsField.focus();
+      if ([...categorySelect.options].some(o=>o.value===category)) categorySelect.value=category;
+      document.getElementById('inquiry-status').textContent='';
+      const field=document.getElementById('producer-name');
+      (field.value.trim()?document.getElementById('inquiry-details'):field).focus({preventScroll:true});
     }
+    window.addEventListener('popstate',()=>navigateTo(location.hash.slice(1)||'home',false));
+    if(location.hash)navigateTo(location.hash.slice(1),false);
 
     // =========================================================================
     // 3. YOUTUBE EMBEDDED CINEMA LIGHTBOX MODAL
@@ -1433,71 +1017,7 @@
     // The secure form handler is loaded as a module below.
 
     // =========================================================================
-    // 5. 3D SERVICE CARD TILT & CURSOR / SCROLL REACTIVE 3D SPHERES
-    // =========================================================================
-    document.querySelectorAll('.tilt-card').forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(1000px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
-      });
-    });
-
-    const spheres = Array.from(document.querySelectorAll('.ambient-sphere')).map((el, idx) => ({
-      el,
-      depth: parseFloat(el.getAttribute('data-cursor-depth') || '0.07') * 620,
-      orbit: parseFloat(el.getAttribute('data-orbit') || '1.0'),
-      phase: idx * 1.4,
-      cx: 0,
-      cy: 0
-    }));
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let scrollOffset = 0;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches.length > 0) {
-        mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
-        mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
-      }
-    }, { passive: true });
-
-    window.addEventListener('scroll', () => {
-      scrollOffset = (window.scrollY || 0) * 0.14;
-    }, { passive: true });
-
-    function animateSpheres(now) {
-      const t = now * 0.001;
-      pagePulseBoost *= 0.92;
-
-      for (let i = 0; i < spheres.length; i++) {
-        const s = spheres[i];
-        const dir = i % 2 === 0 ? 1 : -1;
-        const floatX = Math.cos(t * 0.65 * s.orbit + s.phase) * 14;
-        const floatY = Math.sin(t * 0.8 * s.orbit + s.phase) * 16;
-
-        const targetX = mouseX * s.depth + floatX + pagePulseBoost * dir;
-        const targetY = mouseY * s.depth + floatY - scrollOffset * dir;
-
-        s.cx += (targetX - s.cx) * 0.08;
-        s.cy += (targetY - s.cy) * 0.08;
-
-        s.el.style.transform = `translate3d(${s.cx.toFixed(2)}px, ${s.cy.toFixed(2)}px, 0)`;
-      }
-
-      requestAnimationFrame(animateSpheres);
-    }
-    requestAnimationFrame(animateSpheres);
+    // CSS motion respects reduced-motion preferences.
   </script>
   <script type="module" src="./production-inquiry.js"></script>
 </body>

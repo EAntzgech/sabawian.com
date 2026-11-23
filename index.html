@@ -4,15 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabawian Production | Stories. Visual Effects. Innovation.</title>
-  <meta name="description" content="Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling." />
-  <meta name="keywords" content="Sabawian Production, Visual Effects, VFX, Film Production, Commercial Production, Video Editing, Creative Technology, Saba AI, sabawian.com" />
+  <meta name="description" content="Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI-Powered Storytelling." />
+  <meta name="keywords" content="Sabawian Production, Visual Effects, VFX, Film Production, Commercial Production, Saba AI, Creative Technology, Post Production, sabawian.com" />
   <meta name="author" content="Sabawian Production" />
   <link rel="canonical" href="https://sabawian.com" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sabawian.com" />
+  <meta property="og:title" content="Sabawian Production — Stories. Visual Effects. Innovation." />
+  <meta property="og:description" content="Over 10 years of industry experience delivering theatrical visual effects, commercial campaigns, narrative film production, and AI-driven storytelling pipelines." />
 
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,16 +31,14 @@
             display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
           },
           colors: {
-            limebase: '#EAF7D4',
-            inkdark: '#141712',
-            gold: {
-              DEFAULT: '#D4AF37',
-              amber: '#F59E0B',
-              deep: '#B45309',
-            },
-            electric: {
-              DEFAULT: '#2563EB',
-              sky: '#38BDF8',
+            brand: {
+              lime: '#a6ff3e',
+              lemon: '#f8ff82',
+              mint: '#c6ff83',
+              neon: '#88ff2b',
+              ink: '#0c1808',
+              forest: '#162910',
+              moss: '#2a4520',
             },
           },
         },
@@ -44,17 +48,13 @@
 
   <style>
     :root {
-      --lime-top: #F5FCE8;
-      --lime-mid: #E6F6C8;
-      --lime-bottom: #D9F0B4;
-      --glass-bg: rgba(255, 255, 255, 0.56);
-      --glass-bg-elevated: rgba(255, 255, 255, 0.72);
-      --glass-border: rgba(255, 255, 255, 0.85);
-      --glass-rim: rgba(20, 23, 18, 0.08);
-      --ink-primary: #141712;
-      --ink-secondary: #374133;
-      --gold-accent: #E89611;
-      --gold-rim: #D4AF37;
+      --brand-lime: #a6ff3e;
+      --brand-lemon: #f8ff82;
+      --brand-mint: #c6ff83;
+      --brand-neon: #88ff2b;
+      --ink-primary: #0c1808;
+      --ink-secondary: #223819;
+      --ink-muted: #456338;
     }
 
     * {
@@ -64,755 +64,1193 @@
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--ink-primary);
-      background: linear-gradient(155deg, var(--lime-top) 0%, var(--lime-mid) 52%, var(--lime-bottom) 100%);
+      min-height: 100vh;
+      /* Pattern-free luminous glassy lime gradient built directly from brand palette */
+      background:
+        radial-gradient(circle at 15% 15%, rgba(248, 255, 130, 0.92) 0%, rgba(198, 255, 131, 0.55) 38%, transparent 70%),
+        radial-gradient(circle at 85% 82%, rgba(136, 255, 43, 0.42) 0%, rgba(166, 255, 62, 0.25) 45%, transparent 75%),
+        linear-gradient(135deg, #f8ff82 0%, #c6ff83 46%, #a6ff3e 100%);
       background-attachment: fixed;
+      color: var(--ink-primary);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Smooth 3D Shaded Spheres Floating Around the Glass Window */
-    .ref-sphere {
+    /* Fixed Viewport Sphere Layer (Responds to Cursor + Page Changes) */
+    #viewport-sphere-stage {
       position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-sphere {
+      position: absolute;
       border-radius: 9999px;
       pointer-events: none;
       will-change: transform;
-      z-index: 1;
     }
 
-    .sphere-magenta {
-      background: radial-gradient(circle at 30% 26%, #FF9CE3 0%, #EC4899 38%, #BE185D 78%, #6B0F38 100%);
-      box-shadow: 0 26px 60px rgba(219, 39, 119, 0.28), inset -12px -14px 28px rgba(45, 5, 25, 0.35);
+    /* 3D Shaded Spheres Harmonized with Brand Lime Palette + Studio Contrast Accents */
+    .sphere-neon-lime {
+      background: radial-gradient(circle at 30% 28%, #f8ff82 0%, #a6ff3e 38%, #4d9e0f 78%, #1d4204 100%);
+      box-shadow: 0 28px 70px rgba(77, 158, 15, 0.34), inset -12px -16px 30px rgba(12, 24, 8, 0.32);
     }
 
-    .sphere-violet {
-      background: radial-gradient(circle at 32% 28%, #DDD6FE 0%, #8B5CF6 42%, #5B21B6 82%, #2E1065 100%);
-      box-shadow: 0 26px 60px rgba(124, 58, 237, 0.26), inset -12px -14px 28px rgba(24, 9, 61, 0.38);
+    .sphere-emerald-glass {
+      background: radial-gradient(circle at 32% 28%, #e4ffbd 0%, #88ff2b 35%, #15803d 76%, #052e16 100%);
+      box-shadow: 0 28px 70px rgba(21, 128, 61, 0.28), inset -12px -16px 30px rgba(5, 46, 22, 0.36);
     }
 
-    .sphere-amber {
-      background: radial-gradient(circle at 30% 28%, #FEF08A 0%, #F59E0B 45%, #C26D06 82%, #663300 100%);
-      box-shadow: 0 28px 65px rgba(245, 158, 11, 0.3), inset -12px -14px 28px rgba(56, 26, 0, 0.35);
+    .sphere-solar-lemon {
+      background: radial-gradient(circle at 30% 28%, #ffffff 0%, #f8ff82 40%, #eab308 78%, #713f12 100%);
+      box-shadow: 0 26px 65px rgba(234, 179, 8, 0.28), inset -10px -14px 26px rgba(66, 32, 6, 0.28);
     }
 
-    .sphere-blue {
-      background: radial-gradient(circle at 30% 28%, #BAE6FD 0%, #38BDF8 44%, #1D4ED8 82%, #172554 100%);
-      box-shadow: 0 24px 55px rgba(37, 99, 235, 0.22), inset -10px -12px 24px rgba(15, 23, 42, 0.35);
+    .sphere-obsidian-emerald {
+      background: radial-gradient(circle at 32% 26%, #c6ff83 0%, #2a4520 34%, #11220c 74%, #060d04 100%);
+      box-shadow: 0 30px 75px rgba(12, 24, 8, 0.32), inset -12px -16px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* Main Centerpiece Frosted Glass Window Card */
+    /* Frosted Glass Centerpiece Stage (Reference Aesthetic) */
     .glass-window {
       position: relative;
       z-index: 10;
       background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.64) 0%,
-        rgba(255, 255, 255, 0.44) 55%,
-        rgba(255, 255, 255, 0.58) 100%
+        rgba(255, 255, 255, 0.62) 0%,
+        rgba(248, 255, 130, 0.34) 48%,
+        rgba(255, 255, 255, 0.54) 100%
       );
-      backdrop-filter: blur(28px) saturate(145%);
-      -webkit-backdrop-filter: blur(28px) saturate(145%);
-      border-radius: 28px;
-      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(32px) saturate(150%);
+      -webkit-backdrop-filter: blur(32px) saturate(150%);
+      border: 1.5px solid rgba(255, 255, 255, 0.82);
       box-shadow:
-        0 34px 80px -18px rgba(28, 42, 16, 0.22),
-        0 0 0 1px var(--glass-rim),
-        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.9);
+        0 36px 90px -20px rgba(12, 24, 8, 0.24),
+        0 12px 32px -10px rgba(77, 158, 15, 0.16),
+        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.92),
+        inset 0 0 40px rgba(255, 255, 255, 0.25);
     }
 
-    /* Inner Glass Card for Sub-Pages (Portfolio, Films, Services, Studio, Saba AI, Contact) */
-    .glass-subcard {
-      background: rgba(255, 255, 255, 0.56);
-      backdrop-filter: blur(18px) saturate(135%);
-      -webkit-backdrop-filter: blur(18px) saturate(135%);
+    /* Inner Glass Cards */
+    .glass-card {
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.68) 0%,
+        rgba(255, 255, 255, 0.44) 100%
+      );
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow:
-        0 16px 36px -12px rgba(28, 42, 16, 0.14),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
+        0 14px 34px -12px rgba(12, 24, 8, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
       transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
                   box-shadow 0.32s ease,
                   border-color 0.32s ease,
-                  background-color 0.32s ease;
+                  background 0.32s ease;
     }
 
-    .glass-subcard:hover {
-      background: rgba(255, 255, 255, 0.72);
-      border-color: rgba(212, 175, 55, 0.75);
+    .glass-card:hover {
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.84) 0%,
+        rgba(248, 255, 130, 0.56) 100%
+      );
+      border-color: #88ff2b;
       box-shadow:
-        0 22px 46px -12px rgba(28, 42, 16, 0.2),
-        0 0 20px rgba(212, 175, 55, 0.18),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+        0 22px 46px -12px rgba(12, 24, 8, 0.2),
+        0 0 24px rgba(166, 255, 62, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
     }
 
-    /* Reference-Style Pill Buttons */
-    .btn-amber-pill {
-      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 55%, #D97706 100%);
-      color: #FFFFFF;
+    /* Pill Buttons */
+    .btn-pill-primary {
+      background: linear-gradient(135deg, #0c1808 0%, #1d3614 100%);
+      color: #f8ff82;
       font-weight: 600;
       border-radius: 9999px;
-      box-shadow: 0 10px 24px -6px rgba(217, 119, 6, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+      border: 1px solid rgba(166, 255, 62, 0.45);
+      box-shadow: 0 12px 28px -6px rgba(12, 24, 8, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
-    .btn-amber-pill:hover {
+    .btn-pill-primary:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #162910 0%, #27491b 100%);
+      box-shadow: 0 16px 34px -6px rgba(12, 24, 8, 0.42), 0 0 20px rgba(166, 255, 62, 0.35);
+    }
+
+    .btn-pill-lime {
+      background: linear-gradient(135deg, #a6ff3e 0%, #88ff2b 100%);
+      color: #0c1808;
+      font-weight: 700;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 26px -6px rgba(136, 255, 43, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    .btn-pill-lime:hover {
       transform: translateY(-2px);
       filter: brightness(1.04);
-      box-shadow: 0 14px 28px -6px rgba(217, 119, 6, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      box-shadow: 0 16px 32px -6px rgba(136, 255, 43, 0.72), inset 0 1px 0 #ffffff;
     }
 
-    .btn-cream-pill {
-      background: rgba(255, 252, 245, 0.94);
-      color: #1E241B;
+    .btn-pill-frosted {
+      background: rgba(255, 255, 255, 0.78);
+      color: #0c1808;
       font-weight: 600;
       border-radius: 9999px;
-      border: 1px solid rgba(20, 23, 18, 0.08);
-      box-shadow: 0 8px 20px -6px rgba(20, 23, 18, 0.14);
-      transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 22px -6px rgba(12, 24, 8, 0.14);
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .btn-cream-pill:hover {
+    .btn-pill-frosted:hover {
       transform: translateY(-2px);
-      background: #FFFFFF;
-      box-shadow: 0 12px 24px -6px rgba(20, 23, 18, 0.2);
+      background: #ffffff;
+      box-shadow: 0 14px 28px -6px rgba(12, 24, 8, 0.2);
     }
 
-    /* Active Page Nav Pill */
-    .nav-page-link {
+    /* Navigation Tabs */
+    .nav-tab {
       position: relative;
-      padding: 0.4rem 0.7rem;
-      border-radius: 9999px;
-      font-size: 0.84rem;
+      color: #223819;
       font-weight: 500;
-      color: #374133;
-      transition: color 0.2s ease, background-color 0.2s ease;
-      cursor: pointer;
-      white-space: nowrap;
+      padding: 0.45rem 0.95rem;
+      border-radius: 9999px;
+      transition: all 0.25s ease;
     }
 
-    .nav-page-link:hover {
-      color: #141712;
+    .nav-tab:hover {
+      color: #0c1808;
       background: rgba(255, 255, 255, 0.55);
     }
 
-    .nav-page-link.is-active {
-      color: #B45309;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.75);
-      box-shadow: 0 2px 10px rgba(20, 23, 18, 0.06);
+    .nav-tab.active {
+      background: #0c1808;
+      color: #f8ff82;
+      font-weight: 600;
+      box-shadow: 0 6px 18px -4px rgba(12, 24, 8, 0.35);
     }
 
-    /* Page View Transition */
-    .page-view {
+    /* Standalone Page View Transitions */
+    .studio-page {
       display: none;
-      animation: pageFadeIn 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: pageFadeIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .page-view.is-active {
+    .studio-page.active {
       display: block;
     }
 
     @keyframes pageFadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px) scale(0.992);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
-    /* 3D Service Card Tilt */
-    .service-tilt-card {
+    /* Theatrical Suspense Feature Poster Styling */
+    .suspense-poster {
+      position: relative;
+      background: radial-gradient(circle at 50% 28%, #1e3315 0%, #0b1407 58%, #040803 100%);
+      border: 1px solid rgba(166, 255, 62, 0.35);
+      box-shadow:
+        0 32px 70px -15px rgba(4, 8, 3, 0.72),
+        0 0 40px rgba(136, 255, 43, 0.18),
+        inset 0 1px 0 rgba(248, 255, 130, 0.3);
+      overflow: hidden;
+    }
+
+    @keyframes beamPulse {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50% { opacity: 0.92; transform: scale(1.04); }
+    }
+
+    .poster-beam {
+      animation: beamPulse 6s ease-in-out infinite;
+    }
+
+    /* 3D Tilt Card */
+    .tilt-card {
       transform-style: preserve-3d;
       will-change: transform;
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(198, 255, 131, 0.4);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(12, 24, 8, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(12, 24, 8, 0.6);
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-amber-300/60 selection:text-inkdark">
+<body class="selection:bg-brand-ink selection:text-brand-lemon">
 
-  <!-- Vibrant 3D Floating Spheres Around the Glass Window (React to Mouse & Scroll) -->
-  <div aria-hidden="true">
-    <!-- Top-Right Violet Sphere (Matches Reference Top-Right) -->
-    <div data-depth="0.065" data-scroll="0.14" data-phase="0.2"
-         class="ref-sphere sphere-violet w-36 h-36 sm:w-52 sm:h-52 top-4 right-[8%] sm:right-[15%]"></div>
-
-    <!-- Mid-Left Large Magenta/Pink Sphere (Matches Reference Left Edge) -->
-    <div data-depth="-0.075" data-scroll="-0.16" data-phase="1.4"
-         class="ref-sphere sphere-magenta w-44 h-44 sm:w-64 sm:h-64 top-[24%] -left-14 sm:left-[2%]"></div>
-
-    <!-- Lower-Left Small Magenta Sphere (Matches Reference Lower-Left Accent) -->
-    <div data-depth="0.09" data-scroll="0.18" data-phase="2.5"
-         class="ref-sphere sphere-magenta w-14 h-14 sm:w-20 sm:h-20 bottom-[26%] left-[6%] sm:left-[12%]"></div>
-
-    <!-- Bottom-Center Violet/Blue Sphere (Matches Reference Bottom Edge) -->
-    <div data-depth="-0.06" data-scroll="-0.12" data-phase="3.7"
-         class="ref-sphere sphere-violet w-40 h-40 sm:w-56 sm:h-56 -bottom-16 left-[28%] sm:left-[35%]"></div>
-
-    <!-- Right-Center Large Amber/Gold Sphere (Matches Reference Right Edge) -->
-    <div data-depth="0.08" data-scroll="0.16" data-phase="4.8"
-         class="ref-sphere sphere-amber w-48 h-48 sm:w-72 sm:h-72 top-[38%] -right-16 sm:right-[1%]"></div>
-
-    <!-- Small Floating Gold Sphere Above Right Amber -->
-    <div data-depth="-0.095" data-scroll="-0.15" data-phase="5.4"
-         class="ref-sphere sphere-amber w-12 h-12 sm:w-16 sm:h-16 top-[28%] right-[9%] sm:right-[13%]"></div>
-
-    <!-- Subtle Electric Blue Accent Sphere for Creative Tech / Saba AI Balance -->
-    <div data-depth="0.055" data-scroll="0.1" data-phase="6.1"
-         class="ref-sphere sphere-blue w-24 h-24 sm:w-32 sm:h-32 bottom-8 right-[14%] opacity-85"></div>
+  <!-- Interactive Cursor & Page-Shift 3D Spheres Stage -->
+  <div id="viewport-sphere-stage" aria-hidden="true">
+    <div data-cursor-depth="0.08" data-orbit="1.0"
+         class="ambient-sphere sphere-neon-lime w-56 h-56 sm:w-80 sm:h-80 top-[6%] -left-16 sm:left-[2%] opacity-95"></div>
+    <div data-cursor-depth="-0.07" data-orbit="1.15"
+         class="ambient-sphere sphere-emerald-glass w-44 h-44 sm:w-64 sm:h-64 top-[4%] right-[4%] sm:right-[10%] opacity-90"></div>
+    <div data-cursor-depth="0.065" data-orbit="0.9"
+         class="ambient-sphere sphere-solar-lemon w-52 h-52 sm:w-76 sm:h-76 bottom-[4%] -right-12 sm:right-[3%] opacity-95"></div>
+    <div data-cursor-depth="-0.085" data-orbit="1.25"
+         class="ambient-sphere sphere-obsidian-emerald w-40 h-40 sm:w-60 sm:h-60 bottom-[3%] left-[12%] sm:left-[24%] opacity-85"></div>
+    <div data-cursor-depth="0.1" data-orbit="1.35"
+         class="ambient-sphere sphere-neon-lime w-20 h-20 sm:w-28 sm:h-28 top-[46%] left-[3%] opacity-90"></div>
+    <div data-cursor-depth="-0.095" data-orbit="1.2"
+         class="ambient-sphere sphere-solar-lemon w-16 h-16 sm:w-24 sm:h-24 top-[32%] right-[3%] opacity-90"></div>
   </div>
 
-  <!-- Main Wrapper -->
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-9 flex-1 flex flex-col justify-center">
+  <!-- Main Centered Frosted Glass Window Container (Reference Architecture) -->
+  <main class="relative z-10 min-h-screen flex items-center justify-center p-3 sm:p-6 lg:p-10">
+    <div class="glass-window w-full max-w-7xl rounded-[28px] sm:rounded-[38px] p-5 sm:p-8 lg:p-11 flex flex-col justify-between min-h-[86vh]">
 
-    <!-- CENTERPIECE FROSTED GLASS WINDOW CARD -->
-    <main class="glass-window w-full px-5 py-6 sm:px-10 sm:py-8 lg:px-12 lg:py-10">
-
-      <!-- TOP BAR INSIDE THE GLASS WINDOW -->
-      <header class="flex flex-wrap items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-inkdark/10">
-        <!-- Left Overlapping Dual-Circle Studio Mark (Matches Reference Top-Left) -->
-        <button type="button" onclick="navigateTo('home')" class="flex items-center gap-2.5 text-left group cursor-pointer focus:outline-none" aria-label="Sabawian Production Home">
-          <span class="relative flex items-center w-9 h-6">
-            <span class="w-5 h-5 rounded-full bg-white shadow-sm border border-inkdark/10 transition-transform duration-300 group-hover:-translate-x-0.5"></span>
-            <span class="w-5 h-5 rounded-full -ml-2 bg-gradient-to-tr from-amber-500 to-yellow-300 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"></span>
+      <!-- TOP NAVIGATION BAR INSIDE THE FROSTED GLASS STAGE -->
+      <header class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-brand-ink/10">
+        <!-- Brand Mark (Overlapping Glass Spheres from Brand Palette + Wordmark) -->
+        <button type="button" onclick="navigateTo('home')" class="flex items-center gap-3 group focus:outline-none cursor-pointer text-left" aria-label="Sabawian Production Home">
+          <span class="relative flex items-center w-10 h-6">
+            <span class="w-5 h-5 rounded-full bg-brand-ink shadow-md transition-transform duration-300 group-hover:-translate-x-0.5"></span>
+            <span class="w-5 h-5 rounded-full -ml-2 bg-gradient-to-tr from-brand-neon to-brand-lemon border border-white shadow-md transition-transform duration-300 group-hover:translate-x-0.5"></span>
           </span>
-          <span class="font-display font-bold text-xs sm:text-sm tracking-wider text-inkdark uppercase">
-            Sabawian
-          </span>
+          <div>
+            <span class="font-display font-extrabold tracking-wider text-sm sm:text-base text-brand-ink block leading-none">
+              SABAWIAN
+            </span>
+            <span class="text-[10px] font-bold tracking-[0.22em] text-brand-moss uppercase block mt-0.5">
+              PRODUCTION
+            </span>
+          </div>
         </button>
 
-        <!-- Center Single-Row Standalone Page Navigation -->
-        <nav aria-label="Standalone Pages" class="hidden md:flex items-center gap-1 lg:gap-2">
-          <button type="button" data-page="home" class="nav-page-link is-active">Home</button>
-          <button type="button" data-page="portfolio" class="nav-page-link">Portfolio</button>
-          <button type="button" data-page="films" class="nav-page-link">Films</button>
-          <button type="button" data-page="services" class="nav-page-link">Services</button>
-          <button type="button" data-page="studio" class="nav-page-link">Studio</button>
-          <button type="button" data-page="saba-ai" class="nav-page-link">Saba AI</button>
-          <button type="button" data-page="contact" class="nav-page-link">Contact</button>
+        <!-- Standalone Page Navigation Tabs -->
+        <nav aria-label="Studio Pages" class="hidden lg:flex items-center gap-1.5 bg-white/45 backdrop-blur-md p-1.5 rounded-full border border-white/75">
+          <button type="button" data-page-target="home" class="nav-tab active text-xs sm:text-sm cursor-pointer">Home</button>
+          <button type="button" data-page-target="portfolio" class="nav-tab text-xs sm:text-sm cursor-pointer">Portfolio</button>
+          <button type="button" data-page-target="films" class="nav-tab text-xs sm:text-sm cursor-pointer">Production &amp; Film</button>
+          <button type="button" data-page-target="services" class="nav-tab text-xs sm:text-sm cursor-pointer">Services</button>
+          <button type="button" data-page-target="studio" class="nav-tab text-xs sm:text-sm cursor-pointer">Studio</button>
+          <button type="button" data-page-target="saba-ai" class="nav-tab text-xs sm:text-sm cursor-pointer flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
+            <span>Saba AI</span>
+          </button>
         </nav>
 
-        <!-- Right Pill Button + Mobile Menu Trigger -->
+        <!-- Right Executive Action & Mobile Toggle -->
         <div class="flex items-center gap-2.5">
-          <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="btn-cream-pill px-4 py-1.5 text-xs sm:text-sm inline-flex items-center gap-1.5">
-            <span>sabawian.com</span>
-          </a>
-          <button id="mobile-nav-toggle" type="button" aria-label="Toggle Page Menu" aria-expanded="false"
-                  class="md:hidden p-2 rounded-full bg-white/75 border border-inkdark/10 text-inkdark hover:bg-white transition cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <button type="button" onclick="navigateTo('contact')" class="btn-pill-frosted px-4 sm:px-5 py-2 text-xs sm:text-sm cursor-pointer">
+            Producer Desk
+          </button>
+          <button id="mobile-nav-toggle" type="button" aria-label="Open Navigation Menu" aria-expanded="false"
+                  class="lg:hidden p-2.5 rounded-full bg-white/70 border border-white text-brand-ink hover:bg-white transition cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
         </div>
+
+        <!-- Mobile Page Switcher Drawer -->
+        <div id="mobile-nav-drawer" class="hidden lg:hidden w-full pt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <button type="button" data-page-target="home" class="nav-tab active text-xs text-center cursor-pointer">Home</button>
+          <button type="button" data-page-target="portfolio" class="nav-tab text-xs text-center cursor-pointer">Portfolio</button>
+          <button type="button" data-page-target="films" class="nav-tab text-xs text-center cursor-pointer">Production &amp; Film</button>
+          <button type="button" data-page-target="services" class="nav-tab text-xs text-center cursor-pointer">Services</button>
+          <button type="button" data-page-target="studio" class="nav-tab text-xs text-center cursor-pointer">Studio</button>
+          <button type="button" data-page-target="saba-ai" class="nav-tab text-xs text-center cursor-pointer">Saba AI</button>
+        </div>
       </header>
 
-      <!-- Mobile Standalone Page Drawer -->
-      <div id="mobile-page-drawer" class="hidden md:hidden flex-wrap gap-1.5 py-3.5 border-b border-inkdark/10">
-        <button type="button" data-page="home" class="nav-page-link is-active">Home</button>
-        <button type="button" data-page="portfolio" class="nav-page-link">Portfolio</button>
-        <button type="button" data-page="films" class="nav-page-link">Films</button>
-        <button type="button" data-page="services" class="nav-page-link">Services</button>
-        <button type="button" data-page="studio" class="nav-page-link">Studio</button>
-        <button type="button" data-page="saba-ai" class="nav-page-link">Saba AI</button>
-        <button type="button" data-page="contact" class="nav-page-link">Contact</button>
-      </div>
-
-      <!-- =================================================================== -->
-      <!-- PAGE 1: HOME (Matches Reference Two-Column Composition & Balance)     -->
-      <!-- =================================================================== -->
-      <section id="page-home" class="page-view is-active pt-7 sm:pt-10 pb-3">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-
-          <!-- Left Column: Studio Headline, Subheadline, Concise Copy, Two Pill Buttons & Social Icons -->
-          <div class="lg:col-span-6 space-y-5">
-            <div class="space-y-1.5">
-              <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight text-inkdark">
-                SABAWIAN<br />
-                PRODUCTION
-              </h1>
-              <p class="font-display font-bold text-lg sm:text-xl text-amber-500 tracking-tight">
-                Stories. Visual Effects. Innovation.
-              </p>
+      <!-- ===================================================================== -->
+      <!-- PAGE 1: HOME (Executive Studio Overview & Centerpiece Visual)         -->
+      <!-- ===================================================================== -->
+      <section id="page-home" class="studio-page active py-8 sm:py-12 my-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Left Column: Studio Positioning & Actions -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/75 border border-white text-xs font-bold tracking-[0.18em] uppercase text-brand-ink shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-brand-neon ring-2 ring-brand-ink/20"></span>
+              <span>Stories &bull; Visual Effects &bull; Innovation</span>
             </div>
 
-            <p class="text-sm sm:text-[0.95rem] leading-relaxed text-inkdark/80 max-w-md">
-              Sabawian Production is an independent creative studio with over 10 years of experience in Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling.
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-brand-ink">
+              SABAWIAN<br />
+              <span class="inline-block px-3 py-0.5 mt-1 rounded-2xl bg-brand-ink text-brand-lemon">PRODUCTION</span>
+            </h1>
+
+            <p class="text-base sm:text-lg font-bold text-brand-forest tracking-wide">
+              Visual Effects &bull; Film Production &bull; Digital Innovation
             </p>
 
-            <!-- Two Reference-Style Pill Action Buttons -->
-            <div class="flex flex-wrap items-center gap-3.5 pt-1">
+            <p class="text-sm sm:text-base text-brand-forest/90 leading-relaxed max-w-xl font-normal">
+              Over 10 years of industry experience delivering theatrical visual effects, commercial campaigns, narrative film production, and AI-driven storytelling pipelines for producers, agencies, and global brands.
+            </p>
+
+            <!-- Primary Pill CTAs -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
               <button
                 type="button"
-                onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Official VFX & Cinema Reel', 'FEATURED REEL')"
-                class="btn-amber-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer"
+                onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Visual Effects & Studio Showreel', 'VISUAL EFFECTS REEL')"
+                class="btn-pill-primary px-7 py-3.5 text-sm sm:text-base inline-flex items-center gap-2.5 cursor-pointer"
               >
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span>Watch Reel</span>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <span>Watch Studio Reel</span>
               </button>
 
               <button
                 type="button"
                 onclick="navigateTo('portfolio')"
-                class="btn-cream-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer"
+                class="btn-pill-frosted px-7 py-3.5 text-sm sm:text-base inline-flex items-center gap-2 cursor-pointer"
               >
-                <span>View Portfolio</span>
-              </button>
-            </div>
-
-            <!-- Bottom Channel Icons Row (Matches Reference Bottom-Left Social Icons) -->
-            <div class="pt-4 flex items-center gap-3">
-              <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
-                 aria-label="Sabawian Production on YouTube"
-                 class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-amber-500 transition-colors shadow-sm">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </a>
-
-              <button type="button" onclick="navigateTo('saba-ai')" aria-label="Saba AI Innovation"
-                      class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-blue-600 transition-colors shadow-sm cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </button>
-
-              <button type="button" onclick="navigateTo('contact')" aria-label="Contact Sabawian Production"
-                      class="w-7 h-7 rounded-full bg-inkdark text-white flex items-center justify-center hover:bg-amber-500 transition-colors shadow-sm cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                <span>Explore Portfolio</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </button>
             </div>
-          </div>
 
-          <!-- Right Column: Crisp Architectural & Cinema Focal Visual with Glass Surface Reflection -->
-          <div class="lg:col-span-6 flex items-center justify-center">
-            <div class="w-full max-w-lg">
-              <svg viewBox="0 0 540 360" class="w-full h-auto select-none drop-shadow-[0_18px_24px_rgba(20,23,18,0.16)]" aria-label="Architectural Skyline & Cinema Reflection">
-                <defs>
-                  <linearGradient id="archLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFFFFF" />
-                    <stop offset="55%" stop-color="#E5E7EB" />
-                    <stop offset="100%" stop-color="#9CA3AF" />
-                  </linearGradient>
-                  <linearGradient id="archShadow" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4B5563" />
-                    <stop offset="100%" stop-color="#1F2937" />
-                  </linearGradient>
-                  <linearGradient id="archGoldTrim" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#FDE68A" />
-                    <stop offset="100%" stop-color="#D97706" />
-                  </linearGradient>
-                  <linearGradient id="glassReflect" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#374151" stop-opacity="0.34" />
-                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
-                  </linearGradient>
-                </defs>
-
-                <!-- Left Botanical / Foliage Silhouette Cluster -->
-                <g fill="#2F3E2E" opacity="0.85">
-                  <circle cx="95" cy="224" r="18" />
-                  <circle cx="116" cy="218" r="22" />
-                  <circle cx="140" cy="222" r="17" />
-                  <circle cx="160" cy="226" r="14" />
-                </g>
-
-                <!-- Right Foliage Cluster -->
-                <g fill="#2F3E2E" opacity="0.85">
-                  <circle cx="388" cy="226" r="15" />
-                  <circle cx="408" cy="221" r="20" />
-                  <circle cx="430" cy="225" r="16" />
-                </g>
-
-                <!-- Skyline Towers (Crisp Architectural Geometry Matching Reference Balance) -->
-                <!-- Tower 1 (Left) -->
-                <polygon points="154,228 154,142 172,132 172,228" fill="url(#archLight)" />
-                <polygon points="172,228 172,132 186,140 186,228" fill="url(#archShadow)" />
-
-                <!-- Tower 2 -->
-                <polygon points="190,228 190,114 210,104 210,228" fill="url(#archLight)" />
-                <polygon points="210,228 210,104 224,116 224,228" fill="url(#archGoldTrim)" opacity="0.85" />
-
-                <!-- Center Tall Spire -->
-                <polygon points="230,228 230,74 252,60 252,228" fill="url(#archLight)" />
-                <polygon points="252,228 252,60 272,76 272,228" fill="url(#archShadow)" />
-                <line x1="252" y1="38" x2="252" y2="60" stroke="#1F2937" stroke-width="2" />
-
-                <!-- Tower 4 (Mid-Right) -->
-                <polygon points="278,228 278,96 300,84 300,228" fill="url(#archLight)" />
-                <polygon points="300,228 300,84 318,98 318,228" fill="url(#archShadow)" />
-
-                <!-- Tower 5 (Right) -->
-                <polygon points="324,228 324,122 346,110 346,228" fill="url(#archLight)" />
-                <polygon points="346,228 346,110 364,124 364,228" fill="url(#archShadow)" />
-
-                <!-- Horizon Baseline -->
-                <line x1="70" y1="228" x2="470" y2="228" stroke="#374151" stroke-opacity="0.3" stroke-width="1.2" />
-
-                <!-- Subtle Reflection on Glass Surface Below Horizon -->
-                <g transform="translate(0, 456) scale(1, -0.42)" opacity="0.55">
-                  <polygon points="154,228 154,142 186,140 186,228" fill="url(#glassReflect)" />
-                  <polygon points="190,228 190,114 224,116 224,228" fill="url(#glassReflect)" />
-                  <polygon points="230,228 230,74 272,76 272,228" fill="url(#glassReflect)" />
-                  <polygon points="278,228 278,96 318,98 318,228" fill="url(#glassReflect)" />
-                  <polygon points="324,228 324,122 364,124 364,228" fill="url(#glassReflect)" />
-                </g>
-              </svg>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- =================================================================== -->
-      <!-- PAGE 2: PORTFOLIO (Visual Effects + Commercial Projects)              -->
-      <!-- =================================================================== -->
-      <section id="page-portfolio" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Selected Showcases</p>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Portfolio</h2>
-          </div>
-
-          <!-- Category Filter Pills -->
-          <div class="inline-flex p-1 rounded-full bg-white/65 border border-white/85 self-start">
-            <button type="button" data-pfilter="all" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-inkdark text-white transition cursor-pointer">
-              All (8)
-            </button>
-            <button type="button" data-pfilter="vfx" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-medium text-inkdark/75 hover:text-inkdark transition cursor-pointer">
-              Visual Effects (5)
-            </button>
-            <button type="button" data-pfilter="commercial" class="pfilter-btn px-4 py-1.5 rounded-full text-xs font-medium text-inkdark/75 hover:text-inkdark transition cursor-pointer">
-              Commercial (3)
-            </button>
-          </div>
-        </div>
-
-        <!-- Visual Effects Sub-Group -->
-        <div id="p-group-vfx" class="mb-8">
-          <div class="flex items-center gap-2.5 mb-4">
-            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-            <h3 class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-inkdark">
-              Visual Effects
-            </h3>
-          </div>
-          <div id="portfolio-vfx-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-        </div>
-
-        <!-- Commercial Projects Sub-Group -->
-        <div id="p-group-commercial">
-          <div class="flex items-center gap-2.5 mb-4">
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-            <h3 class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-inkdark">
-              Commercial Projects
-            </h3>
-          </div>
-          <div id="portfolio-commercial-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-        </div>
-      </section>
-
-      <!-- =================================================================== -->
-      <!-- PAGE 3: FILMS (Streaming-Style Widescreen Film Production)          -->
-      <!-- =================================================================== -->
-      <section id="page-films" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="mb-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-blue-600">Widescreen Cinema</p>
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Film Production</h2>
-        </div>
-
-        <!-- Active Widescreen Banner -->
-        <div class="glass-subcard rounded-3xl overflow-hidden mb-6">
-          <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div class="lg:col-span-6 p-6 sm:p-8 space-y-3.5">
-              <div class="flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-wider">
-                <span id="active-film-badge" class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-700 border border-amber-500/30">FEATURE FILM</span>
-                <span id="active-film-format" class="text-inkdark/60">4K ANAMORPHIC</span>
+            <!-- Executive Credentials Strip -->
+            <div class="pt-4 grid grid-cols-3 gap-3 max-w-lg">
+              <div class="glass-card rounded-2xl p-3.5">
+                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">10+ Yrs</p>
+                <p class="text-[11px] font-medium text-brand-moss">Studio Track Record</p>
               </div>
-              <h3 id="active-film-title" class="font-display font-extrabold text-xl sm:text-2xl text-inkdark">
-                Chronicles of Light &amp; Shadow
-              </h3>
-              <p id="active-film-desc" class="text-xs sm:text-sm text-inkdark/75 leading-relaxed">
-                Cinematic visual storytelling uniting practical camera work, photoreal environments, and atmospheric lighting.
-              </p>
-              <div class="pt-1 flex flex-wrap items-center gap-3">
-                <button id="active-film-play" type="button" class="btn-amber-pill px-5 py-2 text-xs sm:text-sm inline-flex items-center gap-2 cursor-pointer">
-                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <span>Watch Preview</span>
-                </button>
-                <span id="active-film-credits" class="text-xs text-inkdark/65 font-medium">Direction • Cinematography • VFX</span>
+              <div class="glass-card rounded-2xl p-3.5">
+                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">VFX &amp; Film</p>
+                <p class="text-[11px] font-medium text-brand-moss">End-to-End Pipeline</p>
+              </div>
+              <div class="glass-card rounded-2xl p-3.5">
+                <p class="font-display font-extrabold text-lg sm:text-xl text-brand-ink">Saba AI</p>
+                <p class="text-[11px] font-medium text-brand-moss">Next-Gen R&amp;D Lab</p>
               </div>
             </div>
-
-            <div id="active-film-visual" class="lg:col-span-6 h-52 sm:h-64 w-full overflow-hidden"></div>
-          </div>
-        </div>
-
-        <!-- 3 Streaming-Style Selector Cards -->
-        <div id="film-tabs-row" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-      </section>
-
-      <!-- =================================================================== -->
-      <!-- PAGE 4: SERVICES (6 Studio Disciplines with 3D Hover Tilt)          -->
-      <!-- =================================================================== -->
-      <section id="page-services" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="mb-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Capabilities</p>
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-inkdark mt-0.5">Studio Services</h2>
-        </div>
-
-        <div id="services-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-      </section>
-
-      <!-- =================================================================== -->
-      <!-- PAGE 5: STUDIO (More Than A Decade of Visual Storytelling)          -->
-      <!-- =================================================================== -->
-      <section id="page-studio" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <p class="text-xs font-bold uppercase tracking-widest text-amber-600">About Sabawian Production</p>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark leading-tight">
-              More Than A Decade of Visual Storytelling
-            </h2>
-            <p class="text-sm sm:text-base text-inkdark/80 leading-relaxed">
-              Sabawian Production is a creative studio dedicated to producing compelling visual experiences through film, visual effects, storytelling, and emerging technologies.
-            </p>
-            <p class="text-xs sm:text-sm text-inkdark/70 leading-relaxed">
-              With over 10 years of independent experience across Film Production, Visual Effects, Video Editing, Commercial Production, Creative Technology, and AI Storytelling, we craft distinctive visuals built for cinema, screens, and digital worlds.
-            </p>
           </div>
 
-          <div class="lg:col-span-5 grid grid-cols-1 gap-3.5">
-            <div class="glass-subcard rounded-2xl p-4">
-              <p class="font-display font-extrabold text-xl text-amber-600">10+ Years</p>
-              <p class="text-xs text-inkdark/75 mt-0.5">Independent Creative Studio Experience</p>
-            </div>
-            <div class="glass-subcard rounded-2xl p-4">
-              <p class="font-display font-extrabold text-xl text-blue-600">Film &amp; VFX Pipeline</p>
-              <p class="text-xs text-inkdark/75 mt-0.5">Production, Compositing, Editing &amp; Commercials</p>
-            </div>
-            <div class="glass-subcard rounded-2xl p-4">
-              <p class="font-display font-extrabold text-xl text-inkdark">Next-Gen Creative Tech</p>
-              <p class="text-xs text-inkdark/75 mt-0.5">Visual Innovation &amp; Saba AI Storytelling</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <!-- Right Column: Bespoke Architectural & Cinema Optics Centerpiece (Zero Placeholders) -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center">
+            <div class="relative w-full max-w-md rounded-[28px] bg-gradient-to-b from-brand-ink via-[#13240d] to-[#081005] border border-white/80 p-6 shadow-2xl overflow-hidden group cursor-pointer"
+                 onclick="openVideoModal('fWhgbiprHyg', 'Sabawian Production — Visual Effects & Studio Showreel', 'VISUAL EFFECTS REEL')">
 
-      <!-- =================================================================== -->
-      <!-- PAGE 6: SABA AI (The Future of Storytelling)                        -->
-      <!-- =================================================================== -->
-      <section id="page-saba-ai" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/25 text-[11px] font-bold uppercase tracking-wider text-blue-700">
-              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-              Saba AI Innovation
-            </span>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark leading-tight">
-              The Future of Storytelling
-            </h2>
-            <p class="font-display font-bold text-base sm:text-lg text-amber-600">
-              Saba AI
-            </p>
-            <p class="text-sm sm:text-base text-inkdark/80 leading-relaxed">
-              Exploring the next frontier of digital characters, AI-powered storytelling, and immersive creative experiences.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">Digital Characters</span>
-              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">AI-Powered Storytelling</span>
-              <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/75 border border-inkdark/10 text-inkdark">Immersive Experiences</span>
-            </div>
-          </div>
+              <!-- Ambient Lime & Lemon Volumetric Backlight -->
+              <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-brand-lime/25 blur-3xl pointer-events-none"></div>
+              <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-brand-lemon/20 blur-3xl pointer-events-none"></div>
 
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="glass-subcard rounded-3xl p-6 w-full max-w-xs flex flex-col items-center text-center">
-              <svg viewBox="0 0 220 220" class="w-40 h-40" aria-label="Saba AI Emblem">
-                <circle cx="110" cy="110" r="88" fill="none" stroke="#2563EB" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="5 5" />
-                <circle cx="110" cy="110" r="62" fill="none" stroke="#D97706" stroke-opacity="0.45" stroke-width="1.5" />
-                <circle cx="110" cy="110" r="34" fill="url(#sabaOrbGrad)" />
+              <!-- Top Telemetry Bar -->
+              <div class="relative z-10 flex items-center justify-between text-[11px] font-semibold tracking-widest uppercase text-brand-mint/85 mb-3">
+                <span>REEL // MASTER</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-brand-lime/20 text-brand-lemon border border-brand-lime/40">4K HDR</span>
+              </div>
+
+              <!-- Architectural Monoliths & Anamorphic Cinema Optics Illustration -->
+              <svg viewBox="0 0 460 300" class="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" aria-label="Sabawian Production Architectural & Cinema Visual">
                 <defs>
-                  <radialGradient id="sabaOrbGrad" cx="35%" cy="30%" r="65%">
-                    <stop offset="0%" stop-color="#FFFFFF" />
-                    <stop offset="45%" stop-color="#38BDF8" />
-                    <stop offset="100%" stop-color="#2563EB" />
+                  <linearGradient id="monolithLime" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f8ff82" />
+                    <stop offset="48%" stop-color="#a6ff3e" />
+                    <stop offset="100%" stop-color="#1e3a12" />
+                  </linearGradient>
+                  <linearGradient id="monolithGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                    <stop offset="55%" stop-color="#c6ff83" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="#0c1808" stop-opacity="0.95" />
+                  </linearGradient>
+                  <linearGradient id="waterReflect" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#a6ff3e" stop-opacity="0.38" />
+                    <stop offset="100%" stop-color="#081005" stop-opacity="0" />
+                  </linearGradient>
+                  <radialGradient id="opticGlow" cx="50%" cy="42%" r="48%">
+                    <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.48" />
+                    <stop offset="55%" stop-color="#88ff2b" stop-opacity="0.16" />
+                    <stop offset="100%" stop-color="#081005" stop-opacity="0" />
                   </radialGradient>
                 </defs>
+
+                <ellipse cx="230" cy="140" rx="185" ry="105" fill="url(#opticGlow)" />
+                <line x1="32" y1="122" x2="428" y2="122" stroke="#a6ff3e" stroke-opacity="0.55" stroke-width="1.5" />
+                <circle cx="230" cy="122" r="4.5" fill="#f8ff82" />
+
+                <!-- Architectural Towers -->
+                <polygon points="105,196 105,108 128,94 128,196" fill="url(#monolithGlass)" />
+                <polygon points="128,196 128,94 146,106 146,196" fill="#14260e" />
+
+                <polygon points="154,196 154,78 180,64 180,196" fill="url(#monolithLime)" />
+                <polygon points="180,196 180,64 202,80 202,196" fill="#182b11" />
+
+                <polygon points="210,196 210,40 238,24 238,196" fill="url(#monolithGlass)" />
+                <polygon points="238,196 238,24 264,44 264,196" fill="url(#monolithLime)" opacity="0.92" />
+                <line x1="238" y1="12" x2="238" y2="24" stroke="#f8ff82" stroke-width="2" />
+
+                <polygon points="272,196 272,72 300,60 300,196" fill="url(#monolithGlass)" />
+                <polygon points="300,196 300,60 324,78 324,196" fill="#14260e" />
+
+                <polygon points="332,196 332,110 355,100 355,196" fill="url(#monolithLime)" opacity="0.88" />
+
+                <line x1="65" y1="196" x2="395" y2="196" stroke="rgba(248,255,130,0.35)" stroke-width="1" />
+
+                <!-- Water Reflection -->
+                <g opacity="0.6" transform="translate(0, 392) scale(1, -0.45)">
+                  <polygon points="105,196 105,108 146,106 146,196" fill="url(#waterReflect)" />
+                  <polygon points="154,196 154,78 202,80 202,196" fill="url(#waterReflect)" />
+                  <polygon points="210,196 210,40 264,44 264,196" fill="url(#waterReflect)" />
+                  <polygon points="272,196 272,72 324,78 324,196" fill="url(#waterReflect)" />
+                  <polygon points="332,196 332,110 355,100 355,196" fill="url(#waterReflect)" />
+                </g>
               </svg>
-              <p class="font-display font-bold text-sm text-inkdark mt-1">SABA AI</p>
-              <p class="text-xs text-inkdark/65">Digital Characters &amp; Narrative Tech</p>
+
+              <!-- Interactive Reel Trigger Bar -->
+              <div class="relative z-10 mt-2 flex items-center justify-between bg-white/10 backdrop-blur-md border border-brand-lime/30 rounded-2xl px-4 py-3">
+                <div>
+                  <p class="text-[10px] uppercase tracking-widest text-brand-lemon font-bold">Official Studio Reel</p>
+                  <p class="text-xs text-white font-medium">Visual Effects &amp; Compositing</p>
+                </div>
+                <span class="w-10 h-10 rounded-full bg-brand-lime text-brand-ink flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- =================================================================== -->
-      <!-- PAGE 7: CONTACT (Let's Create Something Extraordinary)              -->
-      <!-- =================================================================== -->
-      <section id="page-contact" class="page-view pt-6 sm:pt-8 pb-3">
-        <div class="max-w-3xl mx-auto text-center space-y-5">
-          <p class="text-xs font-bold uppercase tracking-widest text-amber-600">Get In Touch</p>
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-inkdark">
-            Let's Create Something Extraordinary
+      <!-- ===================================================================== -->
+      <!-- PAGE 2: PORTFOLIO (Visual Effects + Commercial Projects)              -->
+      <!-- ===================================================================== -->
+      <section id="page-portfolio" class="studio-page py-8 sm:py-10 space-y-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Curated Studio Credits</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-ink tracking-tight mt-1">
+              Visual Effects &amp; Commercial Portfolio
+            </h2>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="inline-flex p-1.5 rounded-full bg-white/60 border border-white self-start">
+            <button type="button" data-portfolio-filter="all" class="portfolio-filter-btn active px-4 py-1.5 rounded-full text-xs font-bold bg-brand-ink text-brand-lemon transition cursor-pointer">
+              All Credits
+            </button>
+            <button type="button" data-portfolio-filter="vfx" class="portfolio-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold text-brand-forest hover:text-brand-ink transition cursor-pointer">
+              Visual Effects
+            </button>
+            <button type="button" data-portfolio-filter="commercial" class="portfolio-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold text-brand-forest hover:text-brand-ink transition cursor-pointer">
+              Commercial Projects
+            </button>
+          </div>
+        </div>
+
+        <!-- CATEGORY 1: VISUAL EFFECTS -->
+        <div id="portfolio-block-vfx" class="space-y-5">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-neon ring-4 ring-brand-lime/40"></span>
+            <h3 class="font-display font-extrabold text-lg sm:text-xl text-brand-ink uppercase tracking-wider">
+              Visual Effects
+            </h3>
+            <div class="h-px flex-1 bg-brand-ink/15"></div>
+          </div>
+
+          <div id="vfx-portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Populated by JS with fWhgbiprHyg + Official Channel Archive Card -->
+          </div>
+        </div>
+
+        <!-- CATEGORY 2: COMMERCIAL PROJECTS (4 Exact Videos Specified by User) -->
+        <div id="portfolio-block-commercial" class="space-y-5">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-ink ring-4 ring-brand-lemon"></span>
+            <h3 class="font-display font-extrabold text-lg sm:text-xl text-brand-ink uppercase tracking-wider">
+              Commercial Projects
+            </h3>
+            <div class="h-px flex-1 bg-brand-ink/15"></div>
+          </div>
+
+          <div id="commercial-portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <!-- Populated by JS with tmDRNr2lDUk, 3Mf4uSU_eeY, H5nXdSzDoJE, bOZHn0yjgtM -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 3: PRODUCTION & FILM (3 Production Works + Suspense Feature)     -->
+      <!-- ===================================================================== -->
+      <section id="page-films" class="studio-page py-8 sm:py-10 space-y-12">
+        <!-- THEATRICAL SUSPENSE POSTER: UPCOMING FEATURE FILM IN PRODUCTION -->
+        <div class="suspense-poster rounded-[30px] p-6 sm:p-10 lg:p-12 text-white">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <!-- Left: Theatrical One-Sheet Artwork -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="relative w-full max-w-[340px] aspect-[2/3] rounded-2xl overflow-hidden border border-brand-lime/45 shadow-2xl bg-[#050a03] flex flex-col justify-between p-6 select-none">
+                <!-- Dramatic Volumetric Light Cone & Silhouette SVG -->
+                <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="suspenseMoon" cx="50%" cy="26%" r="46%">
+                      <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.95" />
+                      <stop offset="28%" stop-color="#a6ff3e" stop-opacity="0.48" />
+                      <stop offset="68%" stop-color="#142b0c" stop-opacity="0.2" />
+                      <stop offset="100%" stop-color="#040803" stop-opacity="0" />
+                    </radialGradient>
+                    <linearGradient id="lightShaft" x1="50%" y1="15%" x2="50%" y2="100%">
+                      <stop offset="0%" stop-color="#f8ff82" stop-opacity="0.45" />
+                      <stop offset="55%" stop-color="#88ff2b" stop-opacity="0.12" />
+                      <stop offset="100%" stop-color="#040803" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+
+                  <rect width="400" height="600" fill="#040803" />
+                  <circle cx="200" cy="160" r="185" fill="url(#suspenseMoon)" class="poster-beam" />
+                  <!-- Volumetric Beam Cone -->
+                  <polygon points="200,155 55,600 345,600" fill="url(#lightShaft)" />
+
+                  <!-- Eclipse Ring -->
+                  <circle cx="200" cy="160" r="54" fill="#050a03" stroke="#f8ff82" stroke-width="1.5" stroke-opacity="0.85" />
+                  <circle cx="200" cy="160" r="68" fill="none" stroke="#a6ff3e" stroke-width="0.75" stroke-dasharray="4 6" stroke-opacity="0.6" />
+
+                  <!-- Anamorphic Lens Flare -->
+                  <line x1="20" y1="160" x2="380" y2="160" stroke="#f8ff82" stroke-width="1.2" stroke-opacity="0.65" />
+
+                  <!-- Distant Monolithic Horizon -->
+                  <polygon points="0,470 95,435 165,455 200,415 240,455 310,430 400,468 400,600 0,600" fill="#081105" />
+
+                  <!-- Lone Investigator / Protagonist Silhouette Standing in Beam -->
+                  <ellipse cx="200" cy="512" rx="34" ry="6" fill="#000000" opacity="0.85" />
+                  <path d="M193,452 C193,446 207,446 207,452 L211,482 L206,512 L201,512 L200,486 L199,512 L194,512 L189,482 Z" fill="#030602" />
+                  <circle cx="200" cy="442" r="5.5" fill="#030602" />
+                </svg>
+
+                <!-- Top Poster Header -->
+                <div class="relative z-10 text-center space-y-1">
+                  <p class="text-[9px] font-bold tracking-[0.34em] uppercase text-brand-lemon/90">
+                    SABAWIAN PRODUCTION PRESENTS
+                  </p>
+                  <p class="text-[10px] tracking-[0.22em] uppercase text-white/60">
+                    AN ORIGINAL FEATURE FILM
+                  </p>
+                </div>
+
+                <!-- Bottom Theatrical Title & Billing Block -->
+                <div class="relative z-10 text-center space-y-3 pt-28">
+                  <p class="text-[11px] italic text-brand-mint/90 tracking-wide">
+                    &ldquo;Every signal leaves a trace. Some were never meant to be decoded.&rdquo;
+                  </p>
+
+                  <div class="py-2 border-y border-brand-lime/30">
+                    <span class="block text-[10px] font-bold tracking-[0.35em] text-brand-lemon uppercase">
+                      UNTITLED SCI-FI THRILLER
+                    </span>
+                    <h3 class="font-display font-extrabold text-2xl sm:text-3xl tracking-[0.18em] text-white uppercase mt-1">
+                      COMING SOON
+                    </h3>
+                  </div>
+
+                  <!-- Authentic Studio Billing Block -->
+                  <p class="text-[7.5px] leading-relaxed tracking-[0.14em] uppercase text-white/55 font-medium">
+                    SABAWIAN PRODUCTION &bull; PRINCIPAL PHOTOGRAPHY &amp; VISUAL EFFECTS IN PROGRESS &bull; WRITTEN, DIRECTED &amp; PRODUCED BY SABAWIAN PRODUCTION &bull; 4K ANAMORPHIC THEATRICAL MASTER
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Executive Production Slate Briefing -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-lime/15 border border-brand-lime/40 text-xs font-bold tracking-[0.2em] uppercase text-brand-lemon">
+                <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
+                <span>In Active Production &bull; Feature Slate</span>
+              </div>
+
+              <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+                Upcoming Feature Film:<br />
+                <span class="text-brand-lime">Currently In Production</span>
+              </h2>
+
+              <p class="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
+                Sabawian Production is currently in active production on an original suspense and speculative-thriller feature film. Combining on-location anamorphic cinematography with proprietary visual effects and atmospheric worldbuilding, the project is being crafted for international theatrical and streaming distribution.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-1">
+                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
+                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Status</p>
+                  <p class="text-sm font-semibold text-white mt-1">In Production</p>
+                </div>
+                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
+                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Format</p>
+                  <p class="text-sm font-semibold text-white mt-1">Feature Film &bull; 4K HDR</p>
+                </div>
+                <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-4">
+                  <p class="text-[11px] uppercase tracking-wider text-brand-lemon font-bold">Studio Role</p>
+                  <p class="text-sm font-semibold text-white mt-1">Production &amp; Lead VFX</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <button type="button" onclick="requestProducerScreener()" class="btn-pill-lime px-6 py-3 text-xs sm:text-sm cursor-pointer">
+                  Request Producer Deck &amp; Screener Updates
+                </button>
+                <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
+                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-white/90 border border-white/25 hover:bg-white/10 transition">
+                  Follow Teaser Releases on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STUDIO PRODUCTION RELEASES (3 Exact Production Videos Specified by User) -->
+        <div class="space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Released Works</span>
+              <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-brand-ink mt-1">
+                Film &amp; Studio Productions
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-brand-forest">
+              Select any production below to launch the embedded cinema player.
+            </p>
+          </div>
+
+          <div id="production-films-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Populated by JS with bxaCHPbpW9I, o22-h4DjT7o, tP7ruLixrRM -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 4: SERVICES (6 Studio Divisions with 3D Tilt Hover Motion)       -->
+      <!-- ===================================================================== -->
+      <section id="page-services" class="studio-page py-8 sm:py-10 space-y-10">
+        <div class="max-w-3xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Production &amp; Post-Production Capabilities</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-ink tracking-tight">
+            Studio Services &amp; Technical Pipeline
           </h2>
-          <p class="text-sm sm:text-base text-inkdark/75">
-            Connect with Sabawian Production for film production, visual effects, commercial projects, and creative technology collaborations.
+          <p class="text-sm sm:text-base text-brand-forest leading-relaxed">
+            Built to integrate seamlessly with executive producers, showrunners, advertising agencies, and creative directors from pre-visualization through final delivery.
           </p>
+        </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-3.5 pt-2">
-            <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
-               class="btn-amber-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              <span>YouTube: @SabawianProduction</span>
-            </a>
-
-            <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer"
-               class="btn-cream-pill px-6 py-2.5 text-xs sm:text-sm inline-flex items-center gap-2">
-              <span>Website: sabawian.com</span>
-            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 01 Film Production -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">01 / PRODUCTION</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">Film Production</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                Full-cycle narrative and documentary production including creative development, directing, principal cinematography, and theatrical finishing.
+              </p>
+            </div>
           </div>
 
-          <div class="glass-subcard rounded-2xl p-5 text-left grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm mt-4">
-            <div>
-              <span class="block text-[11px] font-bold uppercase tracking-wider text-inkdark/55">Official YouTube</span>
-              <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer" class="font-semibold text-inkdark hover:text-amber-600 transition">
-                https://www.youtube.com/@SabawianProduction
-              </a>
+          <!-- 02 Visual Effects -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">02 / VFX &amp; CG</span>
             </div>
-            <div>
-              <span class="block text-[11px] font-bold uppercase tracking-wider text-inkdark/55">Official Website</span>
-              <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-inkdark hover:text-amber-600 transition">
-                https://sabawian.com
-              </a>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">Visual Effects</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                Feature-grade compositing, photoreal digital set extensions, environment creation, matchmoving, cleanup, and atmospheric FX simulations.
+              </p>
+            </div>
+          </div>
+
+          <!-- 03 Video Editing -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">03 / EDITORIAL</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">Video Editing &amp; Finishing</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                Offline and online editorial, trailer cutting, color pipeline management, and multi-format mastering for theatrical, broadcast, and streaming delivery.
+              </p>
+            </div>
+          </div>
+
+          <!-- 04 Commercial Production -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">04 / COMMERCIAL</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">Commercial Production</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                High-craft commercial campaigns, brand films, and product launches designed to elevate brand authority with cinematic visual polish.
+              </p>
+            </div>
+          </div>
+
+          <!-- 05 Creative Technology -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lemon flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">05 / CREATIVE TECH</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">Creative Technology</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                Real-time rendering workflows, motion graphics design systems, virtual production pre-vis, and interactive visual engineering.
+              </p>
+            </div>
+          </div>
+
+          <!-- 06 AI Storytelling -->
+          <div class="tilt-card glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-brand-ink text-brand-lime flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <span class="text-xs font-bold tracking-widest text-brand-moss">06 / SABA AI</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-display font-bold text-xl text-brand-ink">AI-Powered Storytelling</h3>
+              <p class="text-sm text-brand-forest leading-relaxed">
+                Proprietary generative pre-visualization, digital character R&amp;D, and AI-assisted production tools built specifically for cinema storytellers.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- COMPACT STUDIO FOOTER INSIDE THE GLASS STAGE -->
-      <footer class="mt-8 pt-5 border-t border-inkdark/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-inkdark/65">
-        <div class="font-medium">
-          <span class="font-display font-bold text-inkdark">Sabawian Production</span> &bull; Stories. Visual Effects. Innovation.
+      <!-- ===================================================================== -->
+      <!-- PAGE 5: STUDIO / ABOUT (Executive Overview)                           -->
+      <!-- ===================================================================== -->
+      <section id="page-studio" class="studio-page py-8 sm:py-12 my-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">About Sabawian Production</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-ink leading-tight">
+              More Than A Decade of Visual Storytelling
+            </h2>
+            <p class="text-base sm:text-lg text-brand-ink/90 font-medium leading-relaxed">
+              Sabawian Production is an independent creative studio dedicated to producing compelling visual experiences through film, visual effects, storytelling, and emerging technologies.
+            </p>
+            <p class="text-sm sm:text-base text-brand-forest leading-relaxed">
+              With over ten years of hands-on production and post-production leadership across film production, video editing, visual effects, motion graphics, and commercial campaigns, our studio unites disciplined cinematic storytelling with modern computational artistry.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3">
+              <button type="button" onclick="navigateTo('films')" class="btn-pill-primary px-6 py-3 text-xs sm:text-sm cursor-pointer">
+                View Feature Film Slate
+              </button>
+              <button type="button" onclick="navigateTo('contact')" class="btn-pill-frosted px-6 py-3 text-xs sm:text-sm cursor-pointer">
+                Connect With Executive Producers
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+              <span class="w-10 h-10 rounded-2xl bg-brand-ink text-brand-lemon font-display font-bold flex items-center justify-center shrink-0">01</span>
+              <div>
+                <h3 class="font-display font-bold text-lg text-brand-ink">10+ Years Industry Heritage</h3>
+                <p class="text-sm text-brand-forest mt-1">Proven delivery across narrative films, broadcast commercials, and complex VFX sequences.</p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+              <span class="w-10 h-10 rounded-2xl bg-brand-ink text-brand-lime font-display font-bold flex items-center justify-center shrink-0">02</span>
+              <div>
+                <h3 class="font-display font-bold text-lg text-brand-ink">Unified Production &amp; VFX</h3>
+                <p class="text-sm text-brand-forest mt-1">On-set supervision integrated directly with post-production compositing, editorial, and finishing.</p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+              <span class="w-10 h-10 rounded-2xl bg-brand-ink text-brand-lemon font-display font-bold flex items-center justify-center shrink-0">03</span>
+              <div>
+                <h3 class="font-display font-bold text-lg text-brand-ink">Next-Generation R&amp;D</h3>
+                <p class="text-sm text-brand-forest mt-1">Pioneering real-time workflows and AI-assisted cinema pipelines through our Saba AI division.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          &copy; <span id="year-display"></span> <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer" class="hover:text-inkdark font-medium">sabawian.com</a>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 6: SABA AI (Innovation & Creative Technology Lab)                -->
+      <!-- ===================================================================== -->
+      <section id="page-saba-ai" class="studio-page py-8 sm:py-12 my-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-ink text-brand-lemon text-xs font-bold tracking-widest uppercase">
+              <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
+              <span>Saba AI &bull; Creative Technology Division</span>
+            </div>
+
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-ink tracking-tight leading-tight">
+              The Future of Storytelling
+            </h2>
+
+            <p class="text-base sm:text-lg text-brand-ink/90 font-medium leading-relaxed max-w-xl">
+              Exploring the next frontier of digital characters, AI-powered storytelling, and immersive creative experiences.
+            </p>
+
+            <p class="text-sm sm:text-base text-brand-forest leading-relaxed max-w-xl">
+              Saba AI bridges traditional visual effects artistry with emerging generative intelligence—empowering directors and producers to rapidly prototype complex worlds, develop expressive digital characters, and expand narrative possibilities without compromising cinematic craft.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+              <div class="glass-card rounded-2xl p-4">
+                <p class="font-display font-bold text-sm text-brand-ink">Digital Characters</p>
+                <p class="text-xs text-brand-forest mt-1">Expressive synthetic performance &amp; look-dev</p>
+              </div>
+              <div class="glass-card rounded-2xl p-4">
+                <p class="font-display font-bold text-sm text-brand-ink">AI Pre-Visualization</p>
+                <p class="text-xs text-brand-forest mt-1">Rapid shot design &amp; lighting exploration</p>
+              </div>
+              <div class="glass-card rounded-2xl p-4">
+                <p class="font-display font-bold text-sm text-brand-ink">Hybrid VFX Pipelines</p>
+                <p class="text-xs text-brand-forest mt-1">Seamless neural + traditional CG finishing</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Saba AI Neural Core Emblem -->
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="relative w-full max-w-sm aspect-square rounded-[32px] bg-gradient-to-br from-brand-ink via-[#12240c] to-[#060d04] border border-white/80 p-7 flex flex-col items-center justify-center shadow-2xl overflow-hidden">
+              <svg viewBox="0 0 300 300" class="w-full h-full" aria-label="Saba AI Neural Core">
+                <defs>
+                  <radialGradient id="sabaLimeCore" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#f8ff82" />
+                    <stop offset="35%" stop-color="#a6ff3e" />
+                    <stop offset="72%" stop-color="#88ff2b" stop-opacity="0.35" />
+                    <stop offset="100%" stop-color="#060d04" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <circle cx="150" cy="150" r="112" fill="none" stroke="rgba(166,255,62,0.28)" stroke-width="1" stroke-dasharray="6 6" />
+                <circle cx="150" cy="150" r="82" fill="none" stroke="rgba(248,255,130,0.42)" stroke-width="1.2" />
+                <circle cx="150" cy="150" r="52" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+
+                <circle cx="150" cy="38" r="4.5" fill="#f8ff82" />
+                <circle cx="262" cy="150" r="4.5" fill="#a6ff3e" />
+                <circle cx="150" cy="262" r="4.5" fill="#f8ff82" />
+                <circle cx="38" cy="150" r="4.5" fill="#a6ff3e" />
+
+                <line x1="150" y1="38" x2="262" y2="150" stroke="rgba(248,255,130,0.25)" stroke-width="1" />
+                <line x1="262" y1="150" x2="150" y2="262" stroke="rgba(166,255,62,0.25)" stroke-width="1" />
+                <line x1="150" y1="262" x2="38" y2="150" stroke="rgba(248,255,130,0.25)" stroke-width="1" />
+                <line x1="38" y1="150" x2="150" y2="38" stroke="rgba(166,255,62,0.25)" stroke-width="1" />
+
+                <circle cx="150" cy="150" r="48" fill="url(#sabaLimeCore)" />
+                <circle cx="150" cy="150" r="14" fill="#ffffff" />
+              </svg>
+
+              <div class="mt-2 text-center bg-white/10 backdrop-blur-md border border-brand-lime/30 rounded-2xl py-2.5 px-5 w-full">
+                <span class="font-display font-bold text-sm tracking-widest text-brand-lemon block">SABA AI</span>
+                <span class="text-[11px] text-brand-mint">Next-Frontier Digital Storytelling</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- PAGE 7: CONTACT / PRODUCER DESK                                       -->
+      <!-- ===================================================================== -->
+      <section id="page-contact" class="studio-page py-8 sm:py-10 my-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <!-- Left: Official Studio Channels -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Executive &amp; Production Inquiries</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-ink tracking-tight leading-tight">
+              Let's Create Something Extraordinary
+            </h2>
+            <p class="text-sm sm:text-base text-brand-forest leading-relaxed">
+              Connect with Sabawian Production for feature film visual effects bidding, commercial production commissions, post-production finishing, or producer lookbook requests.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
+                 class="glass-card rounded-2xl p-4 flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                  <span class="w-10 h-10 rounded-full bg-brand-ink text-brand-lemon flex items-center justify-center">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-moss">Official Channel</p>
+                    <p class="text-sm font-bold text-brand-ink group-hover:underline">youtube.com/@SabawianProduction</p>
+                  </div>
+                </div>
+                <span class="text-brand-ink font-bold">&rarr;</span>
+              </a>
+
+              <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer"
+                 class="glass-card rounded-2xl p-4 flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                  <span class="w-10 h-10 rounded-full bg-brand-ink text-brand-lime flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-moss">Studio Domain</p>
+                    <p class="text-sm font-bold text-brand-ink group-hover:underline">https://sabawian.com</p>
+                  </div>
+                </div>
+                <span class="text-brand-ink font-bold">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Executive Production Brief Form -->
+          <div class="lg:col-span-7">
+            <form id="producer-inquiry-form" class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="producer-name" class="block text-xs font-bold text-brand-ink mb-1.5">Name &amp; Title</label>
+                  <input id="producer-name" type="text" required placeholder="Name / Executive Producer"
+                         class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
+                </div>
+                <div>
+                  <label for="producer-email" class="block text-xs font-bold text-brand-ink mb-1.5">Production Email</label>
+                  <input id="producer-email" type="email" required placeholder="name@productioncompany.com"
+                         class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition" />
+                </div>
+              </div>
+
+              <div>
+                <label for="inquiry-category" class="block text-xs font-bold text-brand-ink mb-1.5">Engagement Type</label>
+                <select id="inquiry-category"
+                        class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink font-medium focus:outline-none focus:border-brand-ink transition">
+                  <option value="Feature Film / VFX Bidding">Feature Film / Visual Effects Bidding</option>
+                  <option value="Upcoming Feature Film — Producer Screener / Lookbook">Upcoming Feature Film — Producer Screener / Lookbook</option>
+                  <option value="Commercial Production Commission">Commercial Production Commission</option>
+                  <option value="Post-Production & Video Editing">Post-Production &amp; Video Editing</option>
+                  <option value="Saba AI & Creative Technology Partnership">Saba AI &amp; Creative Technology Partnership</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="inquiry-details" class="block text-xs font-bold text-brand-ink mb-1.5">Production Brief &amp; Delivery Schedule</label>
+                <textarea id="inquiry-details" rows="4" required placeholder="Share project scope, shot count or runtime, and target delivery window..."
+                          class="w-full rounded-2xl bg-white/80 border border-brand-ink/15 px-4 py-3 text-sm text-brand-ink placeholder-brand-moss/60 focus:outline-none focus:border-brand-ink transition"></textarea>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                <span id="inquiry-status" class="text-xs font-bold text-brand-forest"></span>
+                <button type="submit" class="btn-pill-primary px-7 py-3 text-sm cursor-pointer w-full sm:w-auto">
+                  Dispatch Production Inquiry
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- STUDIO FOOTER INSIDE GLASS WINDOW -->
+      <footer class="pt-6 border-t border-brand-ink/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-forest">
+        <div class="flex items-center gap-4">
+          <a href="https://www.youtube.com/@SabawianProduction" target="_blank" rel="noopener noreferrer"
+             aria-label="YouTube" class="w-8 h-8 rounded-full bg-brand-ink text-brand-lemon flex items-center justify-center hover:scale-105 transition">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://sabawian.com" target="_blank" rel="noopener noreferrer"
+             aria-label="sabawian.com" class="w-8 h-8 rounded-full bg-white/80 border border-brand-ink/15 text-brand-ink flex items-center justify-center hover:scale-105 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </a>
+          <span class="font-semibold text-brand-ink">Stories. Visual Effects. Innovation.</span>
+        </div>
+
+        <p class="font-medium">
+          &copy; <span id="copyright-year"></span> Sabawian Production &bull; sabawian.com
+        </p>
       </footer>
 
-    </main>
-  </div>
+    </div>
+  </main>
 
-  <!-- EMBEDDED YOUTUBE PLAYER MODAL -->
-  <div id="yt-modal" role="dialog" aria-modal="true" aria-labelledby="yt-modal-title"
-       class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-inkdark/75 backdrop-blur-md">
-    <div class="w-full max-w-4xl glass-window rounded-3xl overflow-hidden p-4 sm:p-6">
-      <div class="flex items-center justify-between gap-4 pb-3 mb-3 border-b border-inkdark/10">
-        <div class="min-w-0">
-          <span id="yt-modal-badge" class="text-[10px] font-bold uppercase tracking-wider text-amber-600">SHOWREEL</span>
-          <h3 id="yt-modal-title" class="font-display font-bold text-sm sm:text-base text-inkdark truncate">Sabawian Production</h3>
+  <!-- EMBEDDED YOUTUBE CINEMA LIGHTBOX MODAL -->
+  <div id="video-modal" role="dialog" aria-modal="true" aria-labelledby="modal-video-title"
+       class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8 bg-brand-ink/80 backdrop-blur-xl">
+    <div class="relative w-full max-w-5xl rounded-[28px] overflow-hidden bg-[#0c1808] border border-brand-lime/45 shadow-2xl">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div class="flex items-center gap-3 min-w-0">
+          <span id="modal-video-category" class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-brand-lime text-brand-ink shrink-0">
+            VFX
+          </span>
+          <h3 id="modal-video-title" class="font-display font-bold text-sm sm:text-base text-white truncate">
+            Sabawian Production
+          </h3>
         </div>
-        <button id="yt-modal-close" type="button" aria-label="Close Video Player"
-                class="w-8 h-8 rounded-full bg-white/80 hover:bg-white text-inkdark flex items-center justify-center border border-inkdark/10 transition cursor-pointer shrink-0">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+
+        <button id="close-modal-btn" type="button" aria-label="Close Video Player"
+                class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-lime hover:text-brand-ink text-white flex items-center justify-center transition cursor-pointer shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-      <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black">
-        <iframe id="yt-iframe" class="absolute inset-0 w-full h-full" src="" title="YouTube Video Player"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+
+      <!-- 16:9 Responsive Embedded YouTube Player -->
+      <div class="relative w-full aspect-video bg-black">
+        <iframe id="youtube-player-iframe"
+                class="absolute inset-0 w-full h-full"
+                src=""
+                title="Sabawian Production Video Player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('year-display').textContent = new Date().getFullYear();
+    // Set dynamic copyright year
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
     // =========================================================================
-    // 1. STANDALONE PAGE SWITCHER (No One-Long-Scroll)
+    // 1. EXACT YOUTUBE DATA MAPPED TO USER'S CORRECT CATEGORIES
     // =========================================================================
-    const pageNames = ['home', 'portfolio', 'films', 'services', 'studio', 'saba-ai', 'contact'];
-    const navButtons = document.querySelectorAll('.nav-page-link');
-    const pageViews = document.querySelectorAll('.page-view');
-    const mobileDrawer = document.getElementById('mobile-page-drawer');
-    const mobileToggle = document.getElementById('mobile-nav-toggle');
-
-    function navigateTo(pageName) {
-      if (!pageNames.includes(pageName)) pageName = 'home';
-
-      pageViews.forEach((view) => {
-        view.classList.toggle('is-active', view.id === `page-${pageName}`);
-      });
-
-      navButtons.forEach((btn) => {
-        btn.classList.toggle('is-active', btn.getAttribute('data-page') === pageName);
-      });
-
-      // Close mobile drawer if open
-      mobileDrawer.classList.add('hidden');
-      mobileDrawer.classList.remove('flex');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    navButtons.forEach((btn) => {
-      btn.addEventListener('click', () => navigateTo(btn.getAttribute('data-page')));
-    });
-
-    mobileToggle.addEventListener('click', () => {
-      const open = mobileDrawer.classList.contains('hidden');
-      mobileDrawer.classList.toggle('hidden', !open);
-      mobileDrawer.classList.toggle('flex', open);
-      mobileToggle.setAttribute('aria-expanded', String(open));
-    });
-
-    // =========================================================================
-    // 2. PORTFOLIO DATA & AUTOMATIC YOUTUBE THUMBNAILS
-    // =========================================================================
-    const vfxVideos = [
-      { id: 'fWhgbiprHyg', title: 'Visual Effects Showcase I', label: 'VFX • Compositing' },
-      { id: 'tmDRNr2lDUk', title: 'Visual Effects Showcase II', label: 'VFX • Environments' },
-      { id: '3Mf4uSU_eeY', title: 'Visual Effects Showcase III', label: 'VFX • Simulations' },
-      { id: 'H5nXdSzDoJE', title: 'Visual Effects Showcase IV', label: 'VFX • Lighting' },
-      { id: 'bOZHn0yjgtM', title: 'Visual Effects Showcase V', label: 'VFX • Motion' }
+    const visualEffectsCredits = [
+      {
+        id: 'fWhgbiprHyg',
+        title: 'Visual Effects & Compositing Showreel',
+        role: 'Lead Visual Effects • Compositing • Finishing',
+        tag: 'Visual Effects'
+      }
     ];
 
-    const commercialVideos = [
-      { id: 'bxaCHPbpW9I', title: 'Commercial Production I', label: 'Commercial' },
-      { id: 'tP7ruLixrRM', title: 'Commercial Production II', label: 'Commercial' },
-      { id: 'o22-h4DjT7o', title: 'Commercial Production III', label: 'Commercial' }
+    const commercialProjectCredits = [
+      {
+        id: 'tmDRNr2lDUk',
+        title: 'Commercial Production I',
+        role: 'Commercial Direction • Cinematography • Post-Production',
+        tag: 'Commercial'
+      },
+      {
+        id: '3Mf4uSU_eeY',
+        title: 'Commercial Production II',
+        role: 'Brand Storytelling • Visual Effects & Motion',
+        tag: 'Commercial'
+      },
+      {
+        id: 'H5nXdSzDoJE',
+        title: 'Commercial Production III',
+        role: 'Commercial Campaign • Color & Finishing',
+        tag: 'Commercial'
+      },
+      {
+        id: 'bOZHn0yjgtM',
+        title: 'Commercial Production IV',
+        role: 'Creative Direction • Editorial & Sound Finishing',
+        tag: 'Commercial'
+      }
     ];
 
-    function buildVideoCard(video, categoryLabel) {
+    const filmProductionCredits = [
+      {
+        id: 'bxaCHPbpW9I',
+        title: 'Studio Film Production I',
+        role: 'Film Production • Direction • Post-Production',
+        tag: 'Production'
+      },
+      {
+        id: 'o22-h4DjT7o',
+        title: 'Studio Film Production II',
+        role: 'Cinematography • Visual Effects • Editorial',
+        tag: 'Production'
+      },
+      {
+        id: 'tP7ruLixrRM',
+        title: 'Studio Film Production III',
+        role: 'Narrative Production • Finishing',
+        tag: 'Production'
+      }
+    ];
+
+    // Helper to create authentic YouTube thumbnail cards with embedded modal playback
+    function buildYouTubeCreditCard(item, categoryBadge) {
       const card = document.createElement('article');
-      card.className = 'glass-subcard rounded-2xl overflow-hidden group cursor-pointer flex flex-col justify-between';
+      card.className = 'glass-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between';
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `Play ${video.title}`);
+      card.setAttribute('aria-label', `Play ${item.title}`);
 
-      const maxThumb = `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`;
-      const fallbackThumb = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+      const maxResThumb = `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`;
+      const hqThumb = `https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`;
 
       card.innerHTML = `
-        <div class="relative aspect-video w-full overflow-hidden bg-inkdark/10">
-          <img src="${maxThumb}"
-               onerror="this.onerror=null;this.src='${fallbackThumb}';"
-               alt="${video.title}"
-               loading="lazy"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-inkdark/25 group-hover:bg-inkdark/15 transition-colors flex items-center justify-center">
-            <span class="w-11 h-11 rounded-full bg-white/90 text-inkdark flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-amber-400">
-              <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div class="relative aspect-video w-full overflow-hidden bg-brand-ink">
+          <img
+            src="${maxResThumb}"
+            onerror="this.onerror=null;this.src='${hqThumb}';"
+            alt="${item.title}"
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-ink/85 via-brand-ink/20 to-transparent"></div>
+
+          <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-brand-ink/85 text-brand-lemon border border-brand-lime/40">
+            ${item.tag}
+          </span>
+
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-14 h-14 rounded-full bg-brand-lime text-brand-ink flex items-center justify-center shadow-2xl border-2 border-white transition-transform duration-300 group-hover:scale-110">
+              <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </span>
           </div>
         </div>
-        <div class="p-4">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">${video.label}</span>
-          <h4 class="font-display font-bold text-sm text-inkdark mt-0.5 group-hover:text-amber-700 transition-colors">${video.title}</h4>
+
+        <div class="p-5 space-y-1">
+          <h4 class="font-display font-bold text-base sm:text-lg text-brand-ink group-hover:text-brand-moss transition-colors">
+            ${item.title}
+          </h4>
+          <p class="text-xs sm:text-sm text-brand-forest font-medium">
+            ${item.role}
+          </p>
         </div>
       `;
 
-      const launch = () => openVideoModal(video.id, video.title, categoryLabel);
+      const launch = () => openVideoModal(item.id, item.title, categoryBadge);
       card.addEventListener('click', launch);
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -824,271 +1262,246 @@
       return card;
     }
 
-    const vfxContainer = document.getElementById('portfolio-vfx-cards');
-    const commContainer = document.getElementById('portfolio-commercial-cards');
-    vfxVideos.forEach((v) => vfxContainer.appendChild(buildVideoCard(v, 'VISUAL EFFECTS')));
-    commercialVideos.forEach((v) => commContainer.appendChild(buildVideoCard(v, 'COMMERCIAL PROJECT')));
+    // Populate Visual Effects Grid + Official Channel Archive Card
+    const vfxGrid = document.getElementById('vfx-portfolio-grid');
+    visualEffectsCredits.forEach((credit) => {
+      vfxGrid.appendChild(buildYouTubeCreditCard(credit, 'VISUAL EFFECTS'));
+    });
 
-    // Portfolio Filter Buttons
-    document.querySelectorAll('.pfilter-btn').forEach((btn) => {
+    const archiveCard = document.createElement('a');
+    archiveCard.href = 'https://www.youtube.com/@SabawianProduction';
+    archiveCard.target = '_blank';
+    archiveCard.rel = 'noopener noreferrer';
+    archiveCard.className = 'glass-card rounded-3xl p-7 flex flex-col justify-between group border-dashed border-brand-ink/30';
+    archiveCard.innerHTML = `
+      <div class="space-y-3">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-brand-ink text-brand-lemon">
+          Official Studio Archive
+        </span>
+        <h4 class="font-display font-extrabold text-xl text-brand-ink">
+          Extended VFX Breakdowns &amp; Reels
+        </h4>
+        <p class="text-sm text-brand-forest leading-relaxed">
+          Explore additional visual effects sequences, compositing breakdowns, and studio releases directly on our official YouTube channel.
+        </p>
+      </div>
+      <div class="pt-6 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-brand-ink">
+        <span>youtube.com/@SabawianProduction</span>
+        <span class="w-9 h-9 rounded-full bg-brand-ink text-brand-lime flex items-center justify-center group-hover:translate-x-1 transition-transform">&rarr;</span>
+      </div>
+    `;
+    vfxGrid.appendChild(archiveCard);
+
+    // Populate Commercial Projects Grid (All 4 Videos)
+    const commercialGrid = document.getElementById('commercial-portfolio-grid');
+    commercialProjectCredits.forEach((credit) => {
+      commercialGrid.appendChild(buildYouTubeCreditCard(credit, 'COMMERCIAL PROJECT'));
+    });
+
+    // Populate Production & Film Grid (All 3 Production Videos)
+    const productionGrid = document.getElementById('production-films-grid');
+    filmProductionCredits.forEach((credit) => {
+      productionGrid.appendChild(buildYouTubeCreditCard(credit, 'FILM PRODUCTION'));
+    });
+
+    // Portfolio Filter Tabs
+    const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+    const vfxBlock = document.getElementById('portfolio-block-vfx');
+    const commercialBlock = document.getElementById('portfolio-block-commercial');
+
+    filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.pfilter-btn').forEach((b) => {
-          b.classList.remove('bg-inkdark', 'text-white', 'font-semibold');
-          b.classList.add('text-inkdark/75', 'font-medium');
+        filterButtons.forEach((b) => {
+          b.classList.remove('active', 'bg-brand-ink', 'text-brand-lemon', 'font-bold');
+          b.classList.add('text-brand-forest', 'font-semibold');
         });
-        btn.classList.add('bg-inkdark', 'text-white', 'font-semibold');
-        btn.classList.remove('text-inkdark/75', 'font-medium');
+        btn.classList.add('active', 'bg-brand-ink', 'text-brand-lemon', 'font-bold');
+        btn.classList.remove('text-brand-forest', 'font-semibold');
 
-        const mode = btn.getAttribute('data-pfilter');
-        document.getElementById('p-group-vfx').classList.toggle('hidden', mode === 'commercial');
-        document.getElementById('p-group-commercial').classList.toggle('hidden', mode === 'vfx');
+        const filter = btn.getAttribute('data-portfolio-filter');
+        if (filter === 'all') {
+          vfxBlock.classList.remove('hidden');
+          commercialBlock.classList.remove('hidden');
+        } else if (filter === 'vfx') {
+          vfxBlock.classList.remove('hidden');
+          commercialBlock.classList.add('hidden');
+        } else if (filter === 'commercial') {
+          vfxBlock.classList.add('hidden');
+          commercialBlock.classList.remove('hidden');
+        }
       });
     });
 
     // =========================================================================
-    // 3. FILMS PAGE (Streaming-Style Widescreen Showcase)
+    // 2. STANDALONE MULTI-PAGE NAVIGATION (No Long Scrolling)
     // =========================================================================
-    const filmItems = [
-      {
-        badge: 'FEATURE FILM',
-        format: '4K WIDESCREEN • CINEMA',
-        title: 'Chronicles of Light & Shadow',
-        desc: 'Atmospheric narrative filmmaking combining expressive cinematography, digital environments, and refined visual storytelling.',
-        credits: 'Direction • Cinematography • VFX',
-        videoId: 'tmDRNr2lDUk',
-        accentA: '#F59E0B',
-        accentB: '#2563EB'
-      },
-      {
-        badge: 'SCI-FI CINEMA',
-        format: 'ANAMORPHIC • DIGITAL WORLD',
-        title: 'Horizons Beyond Tomorrow',
-        desc: 'Immersive worldbuilding and visual effects crafted for high-impact sci-fi storytelling and modern screen formats.',
-        credits: 'Visual Effects • Production • Post',
-        videoId: 'fWhgbiprHyg',
-        accentA: '#8B5CF6',
-        accentB: '#38BDF8'
-      },
-      {
-        badge: 'VISUAL STORY',
-        format: 'HDR FINISH • SOUND DESIGN',
-        title: 'Echoes of Heritage',
-        desc: 'Rich visual narratives honoring timeless architecture, dramatic lighting, and emotional pacing.',
-        credits: 'Film Production • Editing • Color',
-        videoId: '3Mf4uSU_eeY',
-        accentA: '#EC4899',
-        accentB: '#F59E0B'
-      }
-    ];
+    let pagePulseBoost = 0;
 
-    function renderFilmBannerSVG(item) {
-      return `
-        <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
-          <defs>
-            <linearGradient id="fg-${item.videoId}" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1E241B" />
-              <stop offset="55%" stop-color="#2D3529" />
-              <stop offset="100%" stop-color="${item.accentA}" stop-opacity="0.55" />
-            </linearGradient>
-            <radialGradient id="fl-${item.videoId}" cx="65%" cy="42%" r="45%">
-              <stop offset="0%" stop-color="${item.accentB}" stop-opacity="0.65" />
-              <stop offset="100%" stop-color="#1E241B" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="640" height="320" fill="url(#fg-${item.videoId})" />
-          <circle cx="420" cy="135" r="150" fill="url(#fl-${item.videoId})" />
-          <polygon points="0,320 0,220 155,165 310,225 470,150 640,215 640,320" fill="#121610" opacity="0.88" />
-          <rect x="18" y="18" width="604" height="284" rx="14" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" />
-        </svg>
-      `;
+    function navigateTo(pageKey) {
+      document.querySelectorAll('.studio-page').forEach((sec) => {
+        sec.classList.remove('active');
+      });
+
+      const targetSection = document.getElementById(`page-${pageKey}`);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      document.querySelectorAll('[data-page-target]').forEach((tab) => {
+        if (tab.getAttribute('data-page-target') === pageKey) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      // Close mobile drawer if open
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const toggle = document.getElementById('mobile-nav-toggle');
+      drawer.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+
+      // Subtle sphere shift impulse when switching pages
+      pagePulseBoost = (Math.random() > 0.5 ? 1 : -1) * 28;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function setActiveFilm(index) {
-      const item = filmItems[index];
-      document.getElementById('active-film-badge').textContent = item.badge;
-      document.getElementById('active-film-format').textContent = item.format;
-      document.getElementById('active-film-title').textContent = item.title;
-      document.getElementById('active-film-desc').textContent = item.desc;
-      document.getElementById('active-film-credits').textContent = item.credits;
-      document.getElementById('active-film-visual').innerHTML = renderFilmBannerSVG(item);
-      document.getElementById('active-film-play').onclick = () =>
-        openVideoModal(item.videoId, `${item.title} — Film Preview`, 'FILM PRODUCTION');
-
-      document.querySelectorAll('.film-tab-card').forEach((el, i) => {
-        el.classList.toggle('ring-2', i === index);
-        el.classList.toggle('ring-amber-500', i === index);
+    document.querySelectorAll('[data-page-target]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        navigateTo(btn.getAttribute('data-page-target'));
       });
+    });
+
+    // Mobile Nav Toggle
+    const mobileToggle = document.getElementById('mobile-nav-toggle');
+    const mobileDrawer = document.getElementById('mobile-nav-drawer');
+    mobileToggle.addEventListener('click', () => {
+      const isHidden = mobileDrawer.classList.contains('hidden');
+      mobileDrawer.classList.toggle('hidden', !isHidden);
+      mobileToggle.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    // Pre-fill Contact Page for Upcoming Feature Film Producer Screener Requests
+    function requestProducerScreener() {
+      navigateTo('contact');
+      const categorySelect = document.getElementById('inquiry-category');
+      const detailsField = document.getElementById('inquiry-details');
+      categorySelect.value = 'Upcoming Feature Film — Producer Screener / Lookbook';
+      detailsField.value = 'Requesting executive producer lookbook, production schedule, and private screener updates for Sabawian Production’s upcoming feature film.';
+      detailsField.focus();
     }
 
-    const filmTabsRow = document.getElementById('film-tabs-row');
-    filmItems.forEach((item, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'film-tab-card glass-subcard rounded-2xl overflow-hidden text-left cursor-pointer group';
-      btn.innerHTML = `
-        <div class="h-28 w-full overflow-hidden">
-          ${renderFilmBannerSVG(item)}
-        </div>
-        <div class="p-3.5">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">${item.badge}</p>
-          <p class="font-display font-bold text-sm text-inkdark mt-0.5 group-hover:text-amber-700 transition-colors">${item.title}</p>
-        </div>
-      `;
-      btn.addEventListener('click', () => setActiveFilm(idx));
-      filmTabsRow.appendChild(btn);
-    });
-    setActiveFilm(0);
-
     // =========================================================================
-    // 4. SERVICES PAGE (6 Capabilities with 3D Hover Tilt)
+    // 3. YOUTUBE EMBEDDED CINEMA LIGHTBOX MODAL
     // =========================================================================
-    const studioServices = [
-      {
-        title: 'Film Production',
-        desc: 'Narrative films and creative visual productions from concept and directing through final finishing.',
-        tag: 'Cinema'
-      },
-      {
-        title: 'Visual Effects',
-        desc: 'Seamless compositing, 3D environments, digital integration, and atmospheric visual effects.',
-        tag: 'VFX'
-      },
-      {
-        title: 'Video Editing',
-        desc: 'Thoughtful editorial storytelling, pacing, color grading, and polished post-production.',
-        tag: 'Editorial'
-      },
-      {
-        title: 'Commercial Production',
-        desc: 'Engaging brand films and commercial productions crafted to stand out on modern screens.',
-        tag: 'Commercial'
-      },
-      {
-        title: 'Creative Technology',
-        desc: 'Motion graphics, real-time visual systems, and modern digital production workflows.',
-        tag: 'Innovation'
-      },
-      {
-        title: 'AI Storytelling',
-        desc: 'Digital characters, AI-powered narratives, and immersive creative experiences with Saba AI.',
-        tag: 'Saba AI'
-      }
-    ];
+    const videoModal = document.getElementById('video-modal');
+    const youtubeIframe = document.getElementById('youtube-player-iframe');
+    const modalTitle = document.getElementById('modal-video-title');
+    const modalCategory = document.getElementById('modal-video-category');
+    const closeModalBtn = document.getElementById('close-modal-btn');
 
-    const servicesGrid = document.getElementById('services-cards-grid');
-    studioServices.forEach((srv, index) => {
-      const card = document.createElement('div');
-      card.className = 'glass-subcard service-tilt-card rounded-2xl p-5 flex flex-col justify-between space-y-4';
-      card.innerHTML = `
-        <div class="flex items-center justify-between">
-          <span class="w-8 h-8 rounded-full bg-amber-500/15 text-amber-700 font-display font-extrabold text-xs flex items-center justify-center">
-            0${index + 1}
-          </span>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-inkdark/55">${srv.tag}</span>
-        </div>
-        <div class="space-y-1.5">
-          <h3 class="font-display font-bold text-base text-inkdark">${srv.title}</h3>
-          <p class="text-xs sm:text-sm text-inkdark/75 leading-relaxed">${srv.desc}</p>
-        </div>
-      `;
-
-      // Smooth 3D hover tilt
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) translateY(-3px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0px)';
-      });
-
-      servicesGrid.appendChild(card);
-    });
-
-    // =========================================================================
-    // 5. YOUTUBE MODAL CONTROLS
-    // =========================================================================
-    const ytModal = document.getElementById('yt-modal');
-    const ytIframe = document.getElementById('yt-iframe');
-    const ytTitle = document.getElementById('yt-modal-title');
-    const ytBadge = document.getElementById('yt-modal-badge');
-    const ytCloseBtn = document.getElementById('yt-modal-close');
-
-    function openVideoModal(videoId, title, badge) {
-      ytTitle.textContent = title;
-      ytBadge.textContent = badge || 'SHOWCASE';
-      ytIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-      ytModal.classList.remove('hidden');
-      ytModal.classList.add('flex');
-      ytCloseBtn.focus();
+    function openVideoModal(videoId, title, category) {
+      modalTitle.textContent = title;
+      modalCategory.textContent = category;
+      youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      videoModal.classList.remove('hidden');
+      videoModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      closeModalBtn.focus();
     }
 
     function closeVideoModal() {
-      ytIframe.src = '';
-      ytModal.classList.add('hidden');
-      ytModal.classList.remove('flex');
+      youtubeIframe.src = '';
+      videoModal.classList.add('hidden');
+      videoModal.classList.remove('flex');
+      document.body.style.overflow = '';
     }
 
-    ytCloseBtn.addEventListener('click', closeVideoModal);
-    ytModal.addEventListener('click', (e) => {
-      if (e.target === ytModal) closeVideoModal();
+    closeModalBtn.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeVideoModal();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !ytModal.classList.contains('hidden')) {
+      if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
         closeVideoModal();
       }
     });
 
     // =========================================================================
-    // 6. CURSOR + SCROLL REACTIVE 3D SPHERES
+    // 4. PRODUCER INQUIRY FORM HANDLER
     // =========================================================================
-    const spheres = Array.from(document.querySelectorAll('.ref-sphere')).map((el) => ({
+    const producerForm = document.getElementById('producer-inquiry-form');
+    const inquiryStatus = document.getElementById('inquiry-status');
+
+    producerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('producer-name').value.trim();
+      const category = document.getElementById('inquiry-category').value;
+      inquiryStatus.textContent = `Confirmed: ${category} inquiry prepared for ${name}. Sabawian Production will respond promptly.`;
+      producerForm.reset();
+    });
+
+    // =========================================================================
+    // 5. 3D SERVICE CARD TILT & CURSOR / SCROLL REACTIVE 3D SPHERES
+    // =========================================================================
+    document.querySelectorAll('.tilt-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(1000px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+      });
+    });
+
+    const spheres = Array.from(document.querySelectorAll('.ambient-sphere')).map((el, idx) => ({
       el,
-      depth: parseFloat(el.getAttribute('data-depth') || '0.06') * 520,
-      scrollFactor: parseFloat(el.getAttribute('data-scroll') || '0.14'),
-      phase: parseFloat(el.getAttribute('data-phase') || '0'),
-      curX: 0,
-      curY: 0
+      depth: parseFloat(el.getAttribute('data-cursor-depth') || '0.07') * 620,
+      orbit: parseFloat(el.getAttribute('data-orbit') || '1.0'),
+      phase: idx * 1.4,
+      cx: 0,
+      cy: 0
     }));
 
-    let pointerX = 0;
-    let pointerY = 0;
-    let targetScroll = window.scrollY || 0;
-    let smoothScroll = targetScroll;
+    let mouseX = 0;
+    let mouseY = 0;
+    let scrollOffset = 0;
 
     window.addEventListener('mousemove', (e) => {
-      pointerX = (e.clientX / window.innerWidth - 0.5) * 2;
-      pointerY = (e.clientY / window.innerHeight - 0.5) * 2;
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches[0]) {
-        pointerX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
-        pointerY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      if (e.touches && e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
       }
     }, { passive: true });
 
     window.addEventListener('scroll', () => {
-      targetScroll = window.scrollY || 0;
+      scrollOffset = (window.scrollY || 0) * 0.14;
     }, { passive: true });
 
     function animateSpheres(now) {
       const t = now * 0.001;
-      smoothScroll += (targetScroll - smoothScroll) * 0.08;
+      pagePulseBoost *= 0.92;
 
       for (let i = 0; i < spheres.length; i++) {
         const s = spheres[i];
-        const driftX = Math.cos(t * 0.65 + s.phase) * 10;
-        const driftY = Math.sin(t * 0.75 + s.phase) * 12;
+        const dir = i % 2 === 0 ? 1 : -1;
+        const floatX = Math.cos(t * 0.65 * s.orbit + s.phase) * 14;
+        const floatY = Math.sin(t * 0.8 * s.orbit + s.phase) * 16;
 
-        const goalX = pointerX * s.depth + driftX;
-        const goalY = pointerY * s.depth + (smoothScroll * s.scrollFactor) + driftY;
+        const targetX = mouseX * s.depth + floatX + pagePulseBoost * dir;
+        const targetY = mouseY * s.depth + floatY - scrollOffset * dir;
 
-        s.curX += (goalX - s.curX) * 0.08;
-        s.curY += (goalY - s.curY) * 0.08;
+        s.cx += (targetX - s.cx) * 0.08;
+        s.cy += (targetY - s.cy) * 0.08;
 
-        s.el.style.transform = `translate3d(${s.curX.toFixed(2)}px, ${s.curY.toFixed(2)}px, 0)`;
+        s.el.style.transform = `translate3d(${s.cx.toFixed(2)}px, ${s.cy.toFixed(2)}px, 0)`;
       }
 
       requestAnimationFrame(animateSpheres);
